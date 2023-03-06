@@ -10,7 +10,7 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 
-.header__wrapper {
+.header-wrapper {
   display: flex;
   justify-content: center;
 }
@@ -25,7 +25,7 @@ body {
   padding: 0 50px;
 }
 
-.buttons {
+.header__buttons {
   display: flex;
   margin-left: auto;
   align-items: center;
@@ -36,36 +36,37 @@ body {
   padding: 12px 20px;
 }
 
-.button__cta {
+.button_cta {
   display: flex;
   background: #a259ff;
-  font-weight: 600;
   border-radius: 20px;
   padding: 20px 30px;
   gap: 12px;
   align-items: center;
 }
 
-.hero__section__wrapper {
+.hero-section-wrapper {
   display: flex;
   height: 700px;
   justify-content: center;
   align-items: center;
 }
 
-.hero__section {
+.hero-section {
   display: flex;
+  justify-content: center;
   gap: 30px;
 }
 
-.hero__text {
+.hero-section__info {
   display: flex;
   flex-direction: column;
-  max-width: 510px;
+  width: 510px;
+  height: 544px;
   gap: 30px;
 }
 
-.headline__subhead {
+.hero-section__headline {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -74,6 +75,7 @@ body {
 .headline {
   font-weight: 600;
   font-size: 67px;
+  line-height: 1.1;
 }
 
 .subhead {
@@ -83,35 +85,88 @@ body {
   text-transform: capitalize;
 }
 
-.info {
+.button_large {
+  padding: 20px 50px;
+  width: 125px;
+}
+
+.hero-section__numbers {
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
+  flex-direction: row;
   gap: 30px;
 }
 
-.info__block {
+.hero-section__block {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   width: 150px;
 }
 
-.block__number {
+.number {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.4;
 }
 
-.block__name {
+.name {
   font-weight: 400;
   font-size: 24px;
   line-height: 1.6;
 }
 
-/* .nft_highlight {
+.hero-section__nft-highlight {
   display: flex;
+  flex-direction: column;
   background: #3b3b3b;
   width: 510px;
   height: 510px;
-} */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.image {
+  background: url(hero.png);
+  width: 510px;
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-section__image-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px 20px;
+}
+
+.img-name {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.hero-section__user {
+  display: flex;
+  gap: 12px;
+}
+
+.avatar {
+  background: url(avatar_1.png);
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 120px;
+}
+
+.username {
+  font-weight: 400;
+  font-size: 16px;
+}
