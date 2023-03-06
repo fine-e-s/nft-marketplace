@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Work+Sans:wght@400;500;600&display=swap");
 
 html,
 body {
@@ -38,8 +39,79 @@ body {
 .button__cta {
   display: flex;
   background: #a259ff;
+  font-weight: 600;
   border-radius: 20px;
   padding: 20px 30px;
   gap: 12px;
   align-items: center;
 }
+
+.hero__section__wrapper {
+  display: flex;
+  height: 700px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__section {
+  display: flex;
+  gap: 30px;
+}
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  max-width: 510px;
+  gap: 30px;
+}
+
+.headline__subhead {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headline {
+  font-weight: 600;
+  font-size: 67px;
+}
+
+.subhead {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.6;
+  text-transform: capitalize;
+}
+
+.info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.info__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 150px;
+}
+
+.block__number {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.block__name {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+/* .nft_highlight {
+  display: flex;
+  background: #3b3b3b;
+  width: 510px;
+  height: 510px;
+} */
