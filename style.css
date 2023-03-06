@@ -168,4 +168,86 @@ body {
 .username {
   font-weight: 400;
   font-size: 16px;
+  line-height: 1.4;
+}
+
+.trending-collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0px;
+  gap: 60px;
+}
+
+.trending-collection__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 1046px;
+  padding: 0px;
+  gap: 10px;
+}
+
+.headline_small {
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.trending-collection__collections {
+  display: flex;
+  gap: 30px;
+}
+
+.trending-collection__item {
+  display: flex;
+  width: 330px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trending-collection__images {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.main-image {
+  width: 330px;
+  height: 330px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.trending-collection__user {
+  display: flex;
+  gap: 10px;
+}
+
+.trending-collection__thumbnails {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 15px;
+  width: 330px;
+  height: 100px;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  background: #3b3b3b;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.thumbnail_more {
+  display: flex;
+  background-color: #a259ff;
+  font-family: "Space Mono";
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
 }
