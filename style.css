@@ -158,7 +158,6 @@ body {
 }
 
 .avatar {
-  background: url(avatar_1.png);
   width: 24px;
   height: 24px;
   background-size: cover;
