@@ -3,14 +3,14 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <div className={styles["hero-section-wrapper"]}>
-      <div className={styles["hero-section"]}>
-        <div className={styles["hero-section__info"]}>
-          <div className={styles["hero-section__headline"]}>
-            <div className={styles["headline"]}>
+    <div className="flex h-[700px] items-center justify-center">
+      <div className="flex justify-center gap-[30px]">
+        <div className="flex h-[544px] w-[510px] flex-col gap-[30px]">
+          <div className="flex flex-col gap-[20px]">
+            <div className="text-[67px] font-semibold leading-[1.1]">
               Discover Digital Art &amp; Collect NFTs
             </div>
-            <div className={styles["subhead"]}>
+            <div className="text-[22px] leading-[1.6]">
               NFT marketplace UI created with Anima for Figma. Collect, buy and
               sell art from more than 20k NFT artists.
             </div>
@@ -21,31 +21,44 @@ export default function Hero() {
             Get Started
           </Button>
 
-          <div className={styles["hero-section__numbers"]}>
-            <div className={styles["hero-section__block"]}>
-              <div className={styles["number"]}>240k+</div>
-              <div className={styles["name"]}>Total Sale</div>
+          <div className="flex flex-row gap-[30px]">
+            <div className="flex w-[150px] flex-col justify-start">
+              <div className="font-mono text-[28px] font-bold leading-[1.4]">
+                240k+
+              </div>
+              <div className="text-[24px] font-normal leading-[1.6]">
+                Total Sale
+              </div>
             </div>
-            <div className={styles["hero-section__block"]}>
-              <div className={styles["number"]}>100k+</div>
-              <div className={styles["name"]}>Auctions</div>
+            <div className="flex w-[150px] flex-col justify-start">
+              <div className="font-mono text-[28px] font-bold leading-[1.4]">
+                100k+
+              </div>
+              <div className="text-[24px] font-normal leading-[1.6]">
+                Auctions
+              </div>
             </div>
-            <div className={styles["hero-section__block"]}>
-              <div className={styles["number"]}>240k+</div>
-              <div className={styles["name"]}>Artists</div>
+            <div className="flex w-[150px] flex-col justify-start">
+              <div className="font-mono text-[28px] font-bold leading-[1.4]">
+                240k+
+              </div>
+              <div className="text-[24px] font-normal leading-[1.6]">
+                Artists
+              </div>
             </div>
           </div>
         </div>
-        <div className={styles["hero-section__nft-highlight"]}>
-          <div className={styles["image"]} />
-          <div className={styles["hero-section__image-info"]}>
-            <div className={styles["img-name"]}>Space Walking</div>
-            <div className={styles["hero-section__user"]}>
-              <div
-                className={styles["avatar"]}
-                style={{ backgroundImage: "url(images/avatar-1.png)" }}
-              />
-              <div className={styles["username"]}>Animakid</div>
+        <div className="flex h-[510px] w-[510px] flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b]">
+          <div className="h-[400px] w-[510px] bg-[url(/images/hero.png)] bg-cover bg-center" />
+          <div className="my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
+            <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
+              Space Walking
+            </div>
+            <div className="flex gap-[12px] bg-inherit">
+              <div className="h-[24px] w-[24px] rounded-[120px] bg-inherit bg-[url(/images/avatar-1.png)] bg-cover bg-center" />
+              <div className="bg-inherit text-[16px] font-normal leading-[1.4]">
+                Animakid
+              </div>
             </div>
           </div>
         </div>
