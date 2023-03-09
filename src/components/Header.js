@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import Button from "./Button";
+
 import styles from "@/styles/Home.module.css";
 
 import userIcon from "/public/icons/user.svg";
@@ -16,14 +18,14 @@ export default function Header() {
           </div>
           <div className={styles["header__buttons"]}>
             <Link href="/marketplace">
-              <div className={styles["button"]}>Marketplace</div>
+              <Button>Marketplace</Button>
             </Link>
-            <div className={styles["button"]}>Ranking</div>
-            <div className={styles["button"]}>Connect a wallet</div>
-            <div className={`${styles["button"]} ${styles["button_cta"]}`}>
+            <Button>Ranking</Button>
+            <Button>Connect a wallet</Button>
+            <Button cta>
               <Image src={userIcon} style={{ background: "transparent" }} />
               Sign Up
-            </div>
+            </Button>
           </div>
         </div>
       </div>
