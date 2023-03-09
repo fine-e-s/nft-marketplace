@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className={styles["page-wrapper"]}>{children}</div>
+      <div className="flex flex-col items-center">{children}</div>
     </>
   );
 }

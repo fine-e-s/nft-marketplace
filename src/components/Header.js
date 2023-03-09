@@ -9,14 +9,14 @@ import userIcon from "/public/icons/user.svg";
 export default function Header() {
   return (
     <>
-      <div className={styles["header-wrapper"]}>
-        <div className={styles["header"]}>
+      <div className="flex justify-center">
+        <div className="flex h-24 w-4/6 items-center">
           <div>
             <Link href="/">
               <img src="icons/logo.svg" />
             </Link>
           </div>
-          <div className={styles["header__buttons"]}>
+          <div className="ml-auto flex items-center gap-2.5 font-semibold">
             <Link href="/marketplace">
               <Button>Marketplace</Button>
             </Link>
