@@ -1,4 +1,5 @@
 import styles from "@/styles/Home.module.css";
+import Button from "./Button";
 
 export default function Hero() {
   return (
@@ -14,12 +15,12 @@ export default function Hero() {
               sell art from more than 20k NFT artists.
             </div>
           </div>
-          <div
-            className={`${styles["button"]} ${styles["button_cta"]} ${styles["button_large"]}`}
-          >
+
+          <Button cta large>
             <img src="icons/rocket.svg" style={{ background: "transparent" }} />
             Get Started
-          </div>
+          </Button>
+
           <div className={styles["hero-section__numbers"]}>
             <div className={styles["hero-section__block"]}>
               <div className={styles["number"]}>240k+</div>
