@@ -308,6 +308,7 @@
 
 .nft-cards__main-container {
   display: grid;
+  background: inherit;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   width: 1050px;
