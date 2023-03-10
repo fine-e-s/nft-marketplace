@@ -1,10 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
-
-import styles from "@/styles/Home.module.css";
-
-import userIcon from "/public/icons/user.svg";
 
 export default function Header() {
   return (
@@ -23,7 +18,7 @@ export default function Header() {
             <Button>Ranking</Button>
             <Button>Connect a wallet</Button>
             <Button cta>
-              <Image src={userIcon} style={{ background: "transparent" }} />
+              <img src="icons/user.svg" style={{ background: "transparent" }} />
               Sign Up
             </Button>
           </div>

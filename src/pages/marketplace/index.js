@@ -1,40 +1,44 @@
-import styles from "@/styles/Home.module.css";
-
 export default function Marketplace() {
   return (
-    <div className={styles["nft-cards__bg-container"]}>
-      <div className={styles["nft-cards__main-container"]}>
+    <div className="flex w-full justify-center bg-[#3b3b3b]">
+      <div className="grid w-[1050px] grid-cols-3 gap-[30px] bg-inherit pt-[60px] pb-[80px]">
         {data.map((dataElement) => (
-          <div className={styles["nft-cards__card"]}>
+          <div className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] bg-[#2b2b2b]">
             <div
-              className={styles["nft-cards__image"]}
-              style={{ backgroundImage: `url(${dataElement.img})` }}
+              className="h-[295px] w-[330px] bg-cover bg-center"
+              style={{ backgroundImage: `url(images/${dataElement.img})` }}
             ></div>
-            <div className={styles["nft-cards__info-container"]}>
-              <div className={styles["nft-cards__image-info"]}>
-                <div className={styles["img-name"]}>{dataElement.imgName}</div>
-                <div className={styles["nft-cards__user"]}>
+            <div className="mx-0 my-auto flex flex-col gap-[25px]">
+              <div className="flex flex-col gap-[6px] px-[30px]">
+                <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
+                  {dataElement.imgName}
+                </div>
+                <div className="flex gap-[12px]">
                   <div
-                    className={styles["avatar"]}
-                    style={{ backgroundImage: `url(${dataElement.avatar})` }}
+                    className="h-[24px] w-[24px] rounded-full bg-inherit bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(images/${dataElement.avatar})`,
+                    }}
                   ></div>
-                  <div
-                    className={`${styles["username"]} ${styles["username_space-mono"]}`}
-                  >
+                  <div className="bg-inherit font-mono text-[16px] font-extralight leading-[1.4]">
                     {dataElement.username}
                   </div>
                 </div>
               </div>
-              <div className={styles["nft-cards__price-info"]}>
-                <div className={styles["nft-cards__price-container"]}>
-                  <div className={styles["label"]}>Price</div>
-                  <div className={styles["amount"]}>
+              <div className="flex justify-center">
+                <div className="flex w-[135px] flex-col items-start gap-[8px]">
+                  <div className="font-mono text-[12px] leading-[1.1] text-[#858584]">
+                    Price
+                  </div>
+                  <div className="font-mono text-[16px] leading-[1.4]">
                     {dataElement.price} ETH
                   </div>
                 </div>
-                <div className={styles["nft-cards__bid-container"]}>
-                  <div className={styles["label"]}>Highest Bid</div>
-                  <div className={styles["amount"]}>
+                <div className="flex w-[135px] flex-col items-end gap-[8px]">
+                  <div className="flex w-[135px] flex-col items-start gap-[8px]">
+                    Highest Bid
+                  </div>
+                  <div className="font-mono text-[16px] leading-[1.4]">
                     {dataElement.highestBid} wETH
                   </div>
                 </div>
@@ -49,98 +53,98 @@ export default function Marketplace() {
 
 const data = [
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },
   {
-    img: "images/magic-shroom.png",
+    img: "magic-shroom.png",
     imgName: "Magic Mushroom 0325",
     username: "Shroomie",
-    avatar: "images/avatar-1.png",
+    avatar: "avatar-1.png",
     price: 1.63,
     highestBid: 0.33,
   },

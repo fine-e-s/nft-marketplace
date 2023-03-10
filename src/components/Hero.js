@@ -1,4 +1,3 @@
-import styles from "@/styles/Home.module.css";
 import Button from "./Button";
 
 export default function Hero() {
