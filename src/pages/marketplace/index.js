@@ -2,8 +2,11 @@ export default function Marketplace() {
   return (
     <div className="flex w-full justify-center bg-[#3b3b3b]">
       <div className="grid w-[1050px] grid-cols-3 gap-[30px] bg-inherit pt-[60px] pb-[80px]">
-        {data.map((dataElement) => (
-          <div className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] bg-[#2b2b2b]">
+        {data.map((dataElement, i) => (
+          <div
+            className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] bg-[#2b2b2b]"
+            key={dataElement.imgName + i}
+          >
             <div
               className="h-[295px] w-[330px] bg-cover bg-center"
               style={{ backgroundImage: `url(images/${dataElement.img})` }}

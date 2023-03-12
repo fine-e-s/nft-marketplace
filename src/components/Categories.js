@@ -5,8 +5,11 @@ export default function Categories() {
         Browse Categories
       </div>
       <div className="grid grid-cols-4 gap-[30px]">
-        {categories.map((category) => (
-          <div className="flex h-[316px] w-[240px] flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b]">
+        {categories.map((category, i) => (
+          <div
+            className="flex h-[316px] w-[240px] flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b]"
+            key={category.name + i}
+          >
             <div className="flex items-center justify-center overflow-hidden">
               <div
                 className="h-[240px] w-[240px] scale-[1.1] bg-inherit bg-cover bg-center blur-[8px] contrast-[.90]"

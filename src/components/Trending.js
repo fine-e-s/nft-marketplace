@@ -10,8 +10,11 @@ export default function Trending() {
         </div>
       </div>
       <div className="flex gap-[30px]">
-        {data.slice(0, 3).map((dataElement) => (
-          <div className="flex w-[330px] flex-col gap-[15px]">
+        {data.slice(0, 3).map((dataElement, i) => (
+          <div
+            className="flex w-[330px] flex-col gap-[15px]"
+            key={dataElement.collectionName + i}
+          >
             <div className="flex flex-col gap-[15px]">
               <div
                 className="h-[330px] w-[330px] rounded-[20px] bg-cover bg-center"
