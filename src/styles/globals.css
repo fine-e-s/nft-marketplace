@@ -16,3 +16,9 @@
 a {
   text-decoration: none;
 }
+
+@layer components {
+  .hoverScale {
+    @apply transition duration-300 ease-in-out hover:scale-105;
+  }
+}

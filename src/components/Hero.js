@@ -15,7 +15,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <Button cta large>
+          <Button cta large hoverScale>
             <img src="icons/rocket.svg" style={{ background: "transparent" }} />
             Get Started
           </Button>

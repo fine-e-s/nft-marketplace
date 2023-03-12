@@ -17,7 +17,7 @@ export default function Header() {
             </Link>
             <Button>Ranking</Button>
             <Button>Connect a wallet</Button>
-            <Button cta>
+            <Button cta hoverScale>
               <img src="icons/user.svg" style={{ background: "transparent" }} />
               Sign Up
             </Button>
