@@ -4,9 +4,9 @@ import Button from "./Button";
 export default function Header() {
   return (
     <>
-      <div className="flex justify-center">
-        <div className="flex h-24 w-4/6 items-center">
-          <div>
+      <div className="flex justify-center px-[50px]">
+        <div className="flex h-24 w-full items-center">
+          <div className="translate-y-[-2px]">
             <Link href="/">
               <img src="icons/logo.svg" className="hoverScale" />
             </Link>
