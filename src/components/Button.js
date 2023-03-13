@@ -2,7 +2,7 @@ export default function Button({
   cta,
   large,
   hoverScale,
-  hoveUnderline,
+  hoverUnderline,
   children,
 }) {
   return (
@@ -13,11 +13,18 @@ export default function Button({
           : ""
       } ${
         large
-          ? " flex w-[224px] justify-center gap-3 rounded-[20px] bg-purple-500 px-5 py-12 font-semibold"
+          ? "flex w-[224px] justify-center gap-3 rounded-[20px] bg-purple-500 px-5 py-12 font-semibold"
           : ""
-      } ${hoverScale ? "hoverScale" : ""}`}
+      } ${hoverScale ? "hoverScale" : ""}  ${
+        hoverUnderline ? "hoverUnderline group overflow-hidden" : ""
+      }`}
     >
       {children}
+      {hoverUnderline ? (
+        <div className="block h-[4px] w-full -translate-x-1/2 scale-x-0 bg-purple-500 transition duration-150 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100"></div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

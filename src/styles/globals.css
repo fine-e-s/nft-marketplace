@@ -21,4 +21,7 @@ a {
   .hoverScale {
     @apply transition duration-300 ease-in-out hover:scale-105;
   }
+  .hoverUnderline {
+    @apply flex flex-col justify-start gap-[2px] !pb-[6px];
+  }
 }

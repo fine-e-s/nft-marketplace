@@ -8,15 +8,15 @@ export default function Header() {
         <div className="flex h-24 w-4/6 items-center">
           <div>
             <Link href="/">
-              <img src="icons/logo.svg" />
+              <img src="icons/logo.svg" className="hoverScale" />
             </Link>
           </div>
           <div className="ml-auto flex items-center gap-2.5 font-semibold">
             <Link href="/marketplace">
-              <Button>Marketplace</Button>
+              <Button hoverUnderline>Marketplace</Button>
             </Link>
-            <Button>Ranking</Button>
-            <Button>Connect a wallet</Button>
+            <Button hoverUnderline>Ranking</Button>
+            <Button hoverUnderline>Connect a wallet</Button>
             <Button cta hoverScale>
               <img src="icons/user.svg" style={{ background: "transparent" }} />
               Sign Up
