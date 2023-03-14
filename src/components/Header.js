@@ -10,6 +10,10 @@ export default function Header() {
     menuToggle(false);
   }
 
+  function closeMenu() {
+    menuToggle(false);
+  }
+
   function handleClick() {
     menuToggle(isMenuOpened ? false : true);
   }
@@ -22,6 +26,7 @@ export default function Header() {
             <img
               src="icons/logo.svg"
               className="hoverScale translate-y-[-2px] max-lg:translate-x-[4px]"
+              onClick={closeMenu}
             />
           </Link>
           <img
@@ -31,7 +36,7 @@ export default function Header() {
           />
         </div>
         <Menu isMenuOpened={isMenuOpened}>
-          <Link href="/marketplace" onClick={handleClick}>
+          <Link href="/marketplace" onClick={closeMenu}>
             <Button hoverUnderline>Marketplace</Button>
           </Link>
           <Button hoverUnderline>Ranking</Button>
