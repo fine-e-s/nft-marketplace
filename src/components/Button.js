@@ -8,7 +8,7 @@ export default function Button({
 }) {
   return (
     <div
-      className={`mx-5 cursor-pointer py-3 ${
+      className={`mx-[10px] cursor-pointer py-3 lg:mx-5 ${
         cta
           ? "!mx-0 flex items-center gap-3 rounded-[20px] bg-purple-500 px-7 py-5"
           : ""
