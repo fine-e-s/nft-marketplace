@@ -2,11 +2,11 @@ import useWindowSize from "src/hooks/useWindowSize";
 
 export default function Trending() {
   const width = useWindowSize().width;
-  let elementNum = width > 1100 ? 3 : 2;
+  let elementNum = width > 1100 ? 3 : width > 768 ? 2 : 1;
 
   return (
-    <div className="my-[40px] flex flex-col gap-[60px]">
-      <div className="flex w-[690px] flex-col items-start gap-[10px] lg:w-[1046px]">
+    <div className="my-[40px] flex flex-col gap-[60px] max-md:mx-[30px]">
+      <div className="flex flex-col items-start gap-[10px] max-md:w-[330px] md:w-[690px] lg:w-[1046px]">
         <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
           Trending Collection
         </div>
@@ -14,7 +14,7 @@ export default function Trending() {
           Checkout our weekly updated trending collection.
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-[30px] overflow-hidden lg:grid-cols-3">
+      <div className="grid gap-[30px] overflow-hidden max-md:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {data.slice(0, elementNum).map((dataElement, i) => (
           <div
             className="flex w-[330px] flex-col gap-[15px]"
