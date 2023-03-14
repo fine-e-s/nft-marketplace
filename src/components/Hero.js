@@ -86,7 +86,7 @@ function Selected() {
 
 function HeroContainer({ children }) {
   return (
-    <div className="flex h-auto flex-col gap-[30px] md:w-[330px] lg:w-[510px]">
+    <div className="flex h-auto flex-col gap-[30px] max-lg:w-[330px] lg:w-[510px]">
       {children}
     </div>
   );
