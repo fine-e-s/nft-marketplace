@@ -1,6 +1,7 @@
 export default function Button({
   cta,
   large,
+  larger,
   hoverScale,
   hoverUnderline,
   children,
@@ -17,7 +18,8 @@ export default function Button({
           : ""
       }      
       ${hoverScale ? "hoverScale" : ""}
-      ${hoverUnderline ? "group relative" : ""}`}
+      ${hoverUnderline ? "group relative" : ""} 
+      ${larger ? "w-auto" : ""}`}
     >
       {children}
       {hoverUnderline ? <div className="underline"></div> : ""}
