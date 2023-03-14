@@ -53,7 +53,7 @@ function Menu({ children, isMenuOpened }) {
         className={`ml-0 flex h-0 flex-col items-start gap-2.5 font-semibold lg:ml-auto lg:flex-row lg:items-center lg:transition-none
       ${
         isMenuOpened
-          ? "max-lg:mb-[200px] max-lg:opacity-100"
+          ? "max-lg:mb-[230px] max-lg:opacity-100"
           : "max-lg:translate-y-[-300px] max-lg:opacity-0"
       }
       ${
