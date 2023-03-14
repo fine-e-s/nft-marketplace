@@ -4,7 +4,7 @@ import Button from "./Button";
 export default function Header() {
   return (
     <>
-      <div className="my-4 flex h-auto w-full flex-col items-start gap-[16px] px-[50px] lg:my-0 lg:h-24 lg:flex-row lg:items-center">
+      <div className="my-4 flex h-auto w-max flex-col items-start gap-[16px] px-[50px] lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
         <div className="translate-y-[-2px]">
           <Link href="/">
             <img src="icons/logo.svg" className="hoverScale" />
