@@ -68,7 +68,7 @@ function Numbers() {
 function Selected() {
   return (
     <div className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]">
-      <div className="bg-[url(/images/hero.png)] bg-cover bg-center md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]" />
+      <div className="bg-[url(/images/hero.png)] bg-cover bg-center max-md:h-[205px] md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]" />
       <div className="my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
         <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
           Space Walking
