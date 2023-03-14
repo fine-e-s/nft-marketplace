@@ -1,16 +1,21 @@
+import useWindowSize from "src/hooks/useWindowSize";
+
 export default function Trending() {
+  const width = useWindowSize().width;
+  let elementNum = width > 1100 ? 3 : 2;
+
   return (
-    <div className="flex flex-col gap-[60px] py-[80px]">
-      <div className="flex w-[1046px] flex-col items-start gap-[10px]">
-        <div className="text-[38px] font-semibold leading-[1.2]">
+    <div className="my-[40px] flex flex-col gap-[60px]">
+      <div className="flex w-[690px] flex-col items-start gap-[10px] lg:w-[1046px]">
+        <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
           Trending Collection
         </div>
-        <div className="text-[22px] font-normal capitalize leading-[1.6]">
+        <div className="text-[16px] font-normal capitalize leading-[1.6] lg:text-[22px]">
           Checkout our weekly updated trending collection.
         </div>
       </div>
-      <div className="flex gap-[30px]">
-        {data.slice(0, 3).map((dataElement, i) => (
+      <div className="grid grid-cols-2 gap-[30px] overflow-hidden lg:grid-cols-3">
+        {data.slice(0, elementNum).map((dataElement, i) => (
           <div
             className="flex w-[330px] flex-col gap-[15px]"
             key={dataElement.collectionName + i}
@@ -23,11 +28,15 @@ export default function Trending() {
               <div className="flex h-[100px] w-[330px] items-start gap-[15px]">
                 <div
                   className="h-[100px] w-[100px] rounded-[20px] bg-[#3b3b3b] bg-cover bg-center"
-                  style={{ backgroundImage: `url(images/${dataElement.img2})` }}
+                  style={{
+                    backgroundImage: `url(images/${dataElement.img2})`,
+                  }}
                 />
                 <div
                   className="h-[100px] w-[100px] rounded-[20px] bg-[#3b3b3b] bg-cover bg-center"
-                  style={{ backgroundImage: `url(images/${dataElement.img3})` }}
+                  style={{
+                    backgroundImage: `url(images/${dataElement.img3})`,
+                  }}
                 />
                 <div className="flex h-[100px] w-[100px] items-center justify-center rounded-[20px] bg-purple-500 bg-cover bg-center font-mono text-[22px] font-bold">
                   {dataElement.q}+
@@ -40,7 +49,9 @@ export default function Trending() {
             <div className="flex gap-[10px]">
               <div
                 className="h-[24px] w-[24px] rounded-full bg-inherit bg-cover bg-center"
-                style={{ backgroundImage: `url(images/${dataElement.avatar})` }}
+                style={{
+                  backgroundImage: `url(images/${dataElement.avatar})`,
+                }}
               />
               <div className="bg-inherit text-[16px] font-normal leading-[1.4]">
                 {dataElement.username}
