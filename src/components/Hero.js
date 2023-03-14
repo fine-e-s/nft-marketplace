@@ -2,9 +2,9 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <div className="flex h-[700px] items-center justify-center">
+    <div className="my-[40px] flex h-auto items-center justify-center">
       <div className="flex justify-center gap-[30px]">
-        <div className="flex h-[544px] flex-col gap-[30px] md:w-[300px] lg:w-[510px]">
+        <div className="flex h-auto flex-col gap-[30px] md:w-[330px] lg:w-[510px]">
           <div className="flex flex-col gap-[20px]">
             <div className="font-semibold leading-[1.1] md:text-[38px] lg:text-[67px]">
               Discover Digital Art &amp; Collect NFTs
