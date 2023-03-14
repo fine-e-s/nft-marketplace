@@ -31,7 +31,7 @@ export default function Header() {
           />
         </div>
         <Menu isMenuOpened={isMenuOpened}>
-          <Link href="/marketplace">
+          <Link href="/marketplace" onClick={handleClick}>
             <Button hoverUnderline>Marketplace</Button>
           </Link>
           <Button hoverUnderline>Ranking</Button>
