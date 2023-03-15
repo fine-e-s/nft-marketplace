@@ -7,7 +7,7 @@ export default function Categories() {
       <div className="grid grid-cols-4 gap-[30px] max-md:grid-cols-2">
         {categories.map((category, i) => (
           <div
-            className="flex h-[210px] w-[150px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#3b3b3b] bg-clip-content transition duration-300 ease-in-out hover:scale-105 hover:border-[#3b3b3b] hover:bg-[#2b2b2b] lg:h-[320px] lg:w-[240px]"
+            className="flex h-[210px] w-[150px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#3b3b3b] bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:border-[#3b3b3b] hover:bg-[#2b2b2b] lg:h-[320px] lg:w-[240px]"
             key={category.name + i}
           >
             <div className="flex items-center justify-center overflow-hidden">
