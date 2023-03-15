@@ -11,6 +11,32 @@ export default function Hero() {
   );
 }
 
+function HeroBlock() {
+  if (useWindowSize().width >= 768) {
+    return (
+      <>
+        <HeroContainer>
+          <Headlines />
+          <ButtonStart />
+          <Numbers />
+        </HeroContainer>
+        <Selected />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <HeroContainer>
+          <Headlines />
+          <Selected />
+          <ButtonStart />
+          <Numbers />
+        </HeroContainer>
+      </>
+    );
+  }
+}
+
 function Headlines() {
   return (
     <div className="flex flex-col gap-[20px]">
@@ -90,30 +116,4 @@ function HeroContainer({ children }) {
       {children}
     </div>
   );
-}
-
-function HeroBlock() {
-  if (useWindowSize().width >= 768) {
-    return (
-      <>
-        <HeroContainer>
-          <Headlines />
-          <ButtonStart />
-          <Numbers />
-        </HeroContainer>
-        <Selected />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <HeroContainer>
-          <Headlines />
-          <Selected />
-          <ButtonStart />
-          <Numbers />
-        </HeroContainer>
-      </>
-    );
-  }
 }
