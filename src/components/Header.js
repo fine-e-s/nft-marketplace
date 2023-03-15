@@ -6,7 +6,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 export default function Header() {
   const [isMenuOpened, menuToggle] = useState(false);
 
-  if (useWindowSize().width > 1100 && isMenuOpened) {
+  if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
   }
 
@@ -71,7 +71,7 @@ function Menu({ children, isMenuOpened }) {
 }
 
 function MenuWrapper({ children, isMenuOpened }) {
-  return useWindowSize().width <= 1100 ? (
+  return useWindowSize().width < 1100 ? (
     <div
       className={`w-full -translate-x-96 duration-500 ${
         isMenuOpened ? "mb-[230px]" : ""
