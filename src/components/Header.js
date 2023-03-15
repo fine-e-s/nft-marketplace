@@ -6,7 +6,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 export default function Header() {
   const [isMenuOpened, menuToggle] = useState(false);
 
-  if (useWindowSize().width >= 1050 && isMenuOpened) {
+  if (useWindowSize().width > 1100 && isMenuOpened) {
     menuToggle(false);
   }
 
@@ -54,21 +54,32 @@ export default function Header() {
 function Menu({ children, isMenuOpened }) {
   return (
     <>
-      <div
-        className={`ml-0 flex h-0 flex-col items-start gap-2.5 font-semibold lg:ml-auto lg:flex-row lg:items-center lg:transition-none
+      <MenuWrapper isMenuOpened={isMenuOpened}>
+        <div
+          className={`ml-0 flex h-0 flex-col items-start gap-2.5 font-semibold max-lg:absolute max-lg:transition-all max-lg:duration-1000 max-lg:ease-out lg:ml-auto lg:flex-row lg:items-center lg:transition-none
       ${
         isMenuOpened
-          ? "max-lg:mb-[230px] max-lg:opacity-100"
-          : "max-lg:translate-y-[-300px] max-lg:opacity-0"
-      }
-      ${
-        useWindowSize().width >= 1050
-          ? ""
-          : "transition-all duration-1000 ease-in-out"
+          ? "max-lg:translate-x-96 max-lg:opacity-100"
+          : "max-lg:opacity-0"
       }`}
-      >
-        {children}
-      </div>
+        >
+          {children}
+        </div>
+      </MenuWrapper>
     </>
+  );
+}
+
+function MenuWrapper({ children, isMenuOpened }) {
+  return useWindowSize().width <= 1100 ? (
+    <div
+      className={`w-full -translate-x-96 duration-500 ${
+        isMenuOpened ? "mb-[230px]" : ""
+      }`}
+    >
+      {children}
+    </div>
+  ) : (
+    <>{children}</>
   );
 }
