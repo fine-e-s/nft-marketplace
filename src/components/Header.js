@@ -44,7 +44,14 @@ export default function Header() {
           </Link>
           <Button hoverUnderline>Ranking</Button>
           <Button hoverUnderline>Connect a wallet</Button>
-          <Button cta hoverScale onClick={regToggle}>
+          <Button
+            cta
+            hoverScale
+            onClick={() => {
+              regToggle();
+              closeMenu();
+            }}
+          >
             <img src="icons/user.svg" style={{ background: "transparent" }} />
             Sign Up
           </Button>
