@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Button from "./Button";
-import { useState } from "react";
 import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function Header() {
-  const [isMenuOpened, menuToggle] = useState(false);
+  const { isMenuOpened, menuToggle } = useMenu();
   const { isRegOpened, regToggle } = useReg();
-  console.log(isRegOpened);
 
   if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
