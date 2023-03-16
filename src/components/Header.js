@@ -34,7 +34,9 @@ export default function Header() {
           </Link>
           <img
             src="icons/menu.svg"
-            className={`lg:hidden ${isMenuOpened ? "bg-[#3b3b3b]" : ""}`}
+            className={`cursor-pointer lg:hidden ${
+              isMenuOpened ? "bg-[#3b3b3b]" : ""
+            }`}
             onClick={handleClick}
           />
         </div>
