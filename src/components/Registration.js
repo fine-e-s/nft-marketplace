@@ -3,14 +3,22 @@ import { useReg } from "@/hooks/RegContext";
 export default function Registration() {
   const { isRegOpened, regToggle } = useReg();
 
-  return isRegOpened ? (
-    <div
-      onClick={regToggle}
-      className="fixed inset-0 z-20 flex h-full w-full items-center justify-center bg-black bg-opacity-50"
-    >
-      <div className="fles h-96 w-96 rounded-[20px] bg-lighter">Hello</div>
-    </div>
-  ) : (
-    ""
+  return (
+    <>
+      <div
+        onClick={regToggle}
+        className={`fixed inset-0 z-20 flex h-full w-full items-center justify-center bg-black bg-opacity-70
+        ${isRegOpened ? "" : "hidden"}`}
+      ></div>
+      <div
+        className={`fixed top-1/2 left-1/2 z-30 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-lighter transition-all duration-300 ${
+          isRegOpened
+            ? "scale-100 opacity-100"
+            : "translate-x-96 scale-150 opacity-0"
+        }`}
+      >
+        Hello
+      </div>
+    </>
   );
 }
