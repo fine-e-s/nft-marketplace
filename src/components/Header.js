@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
-import { useReg } from "@/hooks/RegContext";
+import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 export default function Header() {

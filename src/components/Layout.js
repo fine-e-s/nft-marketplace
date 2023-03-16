@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Registration from "./Registration";
-import { RegContextProvider } from "@/hooks/RegContext";
+import { RegContextProvider } from "@/hooks/useReg";
 
 export default function Layout({ children }) {
   return (
