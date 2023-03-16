@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
+import { useReg } from "./RegContext";
 import useWindowSize from "@/hooks/useWindowSize";
 
 export default function Header() {
   const [isMenuOpened, menuToggle] = useState(false);
+  const { isRegOpened, regToggle } = useReg();
+  console.log(isRegOpened);
 
   if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
@@ -41,7 +44,7 @@ export default function Header() {
           </Link>
           <Button hoverUnderline>Ranking</Button>
           <Button hoverUnderline>Connect a wallet</Button>
-          <Button cta hoverScale>
+          <Button cta hoverScale onClick={regToggle}>
             <img src="icons/user.svg" style={{ background: "transparent" }} />
             Sign Up
           </Button>
