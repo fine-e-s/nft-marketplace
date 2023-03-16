@@ -1,4 +1,4 @@
-import useWindowSize from "src/hooks/useWindowSize";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export default function Trending() {
   const width = useWindowSize().width;

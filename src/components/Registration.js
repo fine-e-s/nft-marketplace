@@ -1,4 +1,4 @@
-import { useReg } from "./RegContext";
+import { useReg } from "@/hooks/RegContext";
 
 export default function Registration() {
   const { isRegOpened, regToggle } = useReg();

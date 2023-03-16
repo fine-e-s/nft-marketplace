@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Button from "./Button";
 import { useState } from "react";
-import { useReg } from "./RegContext";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useReg } from "@/hooks/RegContext";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export default function Header() {
   const [isMenuOpened, menuToggle] = useState(false);
