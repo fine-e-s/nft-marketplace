@@ -12,7 +12,9 @@ export default function Registration() {
       ></div>
       <div
         className={`fixed top-1/2 left-1/2 z-30 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-lighter transition-all duration-300 ${
-          isRegOpened ? "scale-100 opacity-100" : "scale-150 opacity-0"
+          isRegOpened
+            ? "scale-100 opacity-100"
+            : "pointer-events-none scale-150 opacity-0"
         }`}
       >
         Hello
