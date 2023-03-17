@@ -18,7 +18,7 @@ export default function Categories() {
               <div className="absolute bg-transparent">
                 <img
                   src={`icons/${category.icon}`}
-                  style={{ background: "transparent" }}
+                  className="bg-transparent max-lg:scale-75 lg:scale-100"
                 />
               </div>
             </div>
