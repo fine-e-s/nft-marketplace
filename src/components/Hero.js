@@ -65,7 +65,7 @@ function ButtonStart() {
       hoverScale
       onClick={() => {
         regToggle();
-        menuToggle(false);
+        isMenuOpened ? menuToggle(false) : "";
       }}
     >
       <img src="icons/rocket.svg" style={{ background: "transparent" }} />
