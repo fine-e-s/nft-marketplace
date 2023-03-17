@@ -59,7 +59,15 @@ function FormInput() {
           </div>
         </form>
         <div className="mx-auto mb-6 flex">
-          <Button cta large hoverScale onClick={regToggle}>
+          <Button
+            cta
+            large
+            hoverScale
+            onClick={() => {
+              regToggle();
+              document.getElementById("2").value = "";
+            }}
+          >
             Submit!
           </Button>
         </div>
