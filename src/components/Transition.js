@@ -9,6 +9,7 @@ export default function Transition({ children }) {
     <>
       <AnimatePresence mode="wait">
         <motion.div
+          className="bg-inherit"
           key={router.route}
           initial="initialState"
           animate="animateState"
