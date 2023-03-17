@@ -65,7 +65,7 @@ function Cards() {
   );
 }
 
-const data = Array(200).fill({
+const data = Array(12).fill({
   img: "magic-shroom.png",
   imgName: "Magic Mushroom 0325",
   username: "Shroomie",
