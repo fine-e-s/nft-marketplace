@@ -66,7 +66,7 @@ function Menu({ children, isMenuOpened }) {
     <>
       <MenuWrapper isMenuOpened={isMenuOpened}>
         <div
-          className={`ml-0 flex h-0 flex-col items-start gap-2.5 font-semibold max-lg:absolute max-lg:transition-all max-lg:duration-1000 max-lg:ease-out lg:ml-auto lg:flex-row lg:items-center lg:transition-none
+          className={`ml-0 flex h-0 flex-col items-start gap-2.5 px-[50px] font-semibold max-lg:absolute max-lg:transition-all max-lg:duration-1000 max-lg:ease-out lg:ml-auto lg:flex-row lg:items-center lg:transition-none
       ${
         isMenuOpened
           ? "delay-300 max-lg:translate-x-96 max-lg:opacity-100"
@@ -83,7 +83,7 @@ function Menu({ children, isMenuOpened }) {
 function MenuWrapper({ children, isMenuOpened }) {
   return useWindowSize().width < 1100 ? (
     <div
-      className={`w-full -translate-x-96 px-[50px] duration-500 ${
+      className={`z-10 w-full -translate-x-96 duration-500 ${
         isMenuOpened ? "mb-[230px]" : "delay-300"
       }`}
     >
