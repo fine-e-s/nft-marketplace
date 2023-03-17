@@ -15,7 +15,7 @@ export default function Categories() {
                 className="h-[142px] w-[150px] scale-[1.1] bg-inherit bg-cover bg-center blur-[8px] contrast-[.90] lg:h-[240px] lg:w-[240px]"
                 style={{ backgroundImage: `url(images/${category.img})` }}
               />
-              <div className="absolute bg-transparent">
+              <div className="fixed bg-transparent">
                 <img
                   src={`icons/${category.icon}`}
                   className="bg-transparent max-lg:scale-75 lg:scale-100"
