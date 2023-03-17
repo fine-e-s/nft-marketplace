@@ -18,8 +18,8 @@ export default function Header() {
 
   return (
     <>
-      <div className="flex h-auto w-full flex-col items-start gap-[16px] bg-origin-padding py-4 px-[50px] max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
-        <div className="z-10 flex w-full flex-row items-center justify-between max-lg:h-[50px]  max-lg:pt-[40px] max-lg:pb-[40px] lg:w-max">
+      <div className="flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
+        <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pt-[40px] max-lg:pb-[40px] lg:w-max">
           <Link href="/">
             <img
               src="icons/logo.svg"
@@ -69,7 +69,7 @@ function Menu({ children, isMenuOpened }) {
           className={`ml-0 flex h-0 flex-col items-start gap-2.5 font-semibold max-lg:absolute max-lg:transition-all max-lg:duration-1000 max-lg:ease-out lg:ml-auto lg:flex-row lg:items-center lg:transition-none
       ${
         isMenuOpened
-          ? "max-lg:translate-x-96 max-lg:opacity-100"
+          ? "delay-300 max-lg:translate-x-96 max-lg:opacity-100"
           : "max-lg:opacity-0"
       }`}
         >
@@ -83,8 +83,8 @@ function Menu({ children, isMenuOpened }) {
 function MenuWrapper({ children, isMenuOpened }) {
   return useWindowSize().width < 1100 ? (
     <div
-      className={`w-full -translate-x-96 duration-500 ${
-        isMenuOpened ? "mb-[230px]" : ""
+      className={`w-full -translate-x-96 px-[50px] duration-500 ${
+        isMenuOpened ? "mb-[230px]" : "delay-300"
       }`}
     >
       {children}
