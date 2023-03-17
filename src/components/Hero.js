@@ -1,5 +1,7 @@
 import Button from "./Button";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { useReg } from "@/hooks/useReg";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function Hero() {
   return (
@@ -52,8 +54,20 @@ function Headlines() {
 }
 
 function ButtonStart() {
+  const { isRegOpened, regToggle } = useReg();
+  const { isMenuOpened, menuToggle } = useMenu();
+
   return (
-    <Button cta large larger={useWindowSize().width < 768} hoverScale>
+    <Button
+      cta
+      large
+      larger={useWindowSize().width < 768}
+      hoverScale
+      onClick={() => {
+        regToggle();
+        menuToggle(false);
+      }}
+    >
       <img src="icons/rocket.svg" style={{ background: "transparent" }} />
       Get Started
     </Button>

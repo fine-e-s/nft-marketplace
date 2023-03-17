@@ -6,6 +6,10 @@ module.exports = {
       mono: ['"Space Mono"', "monospace"],
     },
     extend: {
+      colors: {
+        darker: "#2b2b2b",
+        lighter: "#3b3b3b",
+      },
       screens: {
         lg: "1100px",
       },

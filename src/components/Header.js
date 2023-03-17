@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Button from "./Button";
-import { useState } from "react";
-import useWindowSize from "@/hooks/useWindowSize";
+import { useReg } from "@/hooks/useReg";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { useMenu } from "@/hooks/useMenu";
 
 export default function Header() {
-  const [isMenuOpened, menuToggle] = useState(false);
+  const { isMenuOpened, menuToggle } = useMenu();
+  const { isRegOpened, regToggle } = useReg();
 
   if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
@@ -31,7 +33,9 @@ export default function Header() {
           </Link>
           <img
             src="icons/menu.svg"
-            className={`lg:hidden ${isMenuOpened ? "bg-[#3b3b3b]" : ""}`}
+            className={`cursor-pointer lg:hidden ${
+              isMenuOpened ? "bg-[#3b3b3b]" : ""
+            }`}
             onClick={handleClick}
           />
         </div>
@@ -41,7 +45,14 @@ export default function Header() {
           </Link>
           <Button hoverUnderline>Ranking</Button>
           <Button hoverUnderline>Connect a wallet</Button>
-          <Button cta hoverScale>
+          <Button
+            cta
+            hoverScale
+            onClick={() => {
+              regToggle();
+              closeMenu();
+            }}
+          >
             <img src="icons/user.svg" style={{ background: "transparent" }} />
             Sign Up
           </Button>
