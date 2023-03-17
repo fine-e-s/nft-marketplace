@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Registration from "./Registration";
+import Transition from "./Transition";
 import { RegContextProvider } from "@/hooks/useReg";
 import { MenuContextProvider } from "@/hooks/useMenu";
 
@@ -10,7 +11,9 @@ export default function Layout({ children }) {
         <MenuContextProvider>
           <Registration />
           <Header />
-          <div className="flex flex-col items-center">{children}</div>
+          <Transition>
+            <div className="flex flex-col items-center">{children}</div>
+          </Transition>
         </MenuContextProvider>
       </RegContextProvider>
     </>
