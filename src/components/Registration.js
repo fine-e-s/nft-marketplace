@@ -1,3 +1,7 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/config/firebase";
+import { useState } from "react";
+
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
 
@@ -27,18 +31,30 @@ export default function Registration() {
 function FormInput() {
   const { isRegOpened, regToggle } = useReg();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function signIn() {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <>
       <div className="flex h-full flex-col justify-between bg-transparent pt-3">
         <form className="flex flex-col bg-inherit">
           <div className="mx-3 grid grid-flow-col items-center bg-inherit">
-            <label htmlFor="username" className="m-3 bg-inherit">
-              Username:
+            <label htmlFor="email" className="m-3 bg-inherit">
+              Email:
             </label>
             <div className="m-3 flex h-10 w-5/6 justify-self-end rounded-2xl border-2 border-lighter">
               <input
-                type="text"
-                name="username"
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                name="email"
                 id="1"
                 className="mx-3 h-full w-full bg-transparent"
               />
@@ -50,6 +66,7 @@ function FormInput() {
             </label>
             <div className="m-3 flex h-10 w-5/6 justify-self-end rounded-2xl border-2 border-lighter">
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 name="password"
                 id="2"
@@ -64,6 +81,7 @@ function FormInput() {
             large
             hoverScale
             onClick={() => {
+              signIn();
               regToggle();
               document.getElementById("2").value = "";
             }}
