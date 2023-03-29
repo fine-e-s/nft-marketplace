@@ -1,5 +1,3 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/firebase";
 import { useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
@@ -34,12 +32,16 @@ function FormInput() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function signIn() {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      console.error(err);
-    }
+  function signIn() {
+    fetch("api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    })
+      .then((res) => res.json())
+      .then((data) => data && console.log(data.message));
   }
 
   return (
