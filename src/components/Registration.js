@@ -41,7 +41,12 @@ function FormInput() {
       body: JSON.stringify({ email: email, password: password }),
     })
       .then((res) => res.json())
-      .then((data) => data && console.log(data.message));
+      .then((data) => {
+        if (data) {
+          console.log(data.message);
+          regToggle();
+        }
+      });
   }
 
   return (
@@ -84,7 +89,6 @@ function FormInput() {
             hoverScale
             onClick={() => {
               signIn();
-              regToggle();
               document.getElementById("2").value = "";
             }}
           >
