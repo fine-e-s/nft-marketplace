@@ -8,6 +8,7 @@ export default function Loading() {
       out.push(
         <>
           <motion.div
+            key={i}
             className="flex h-14 w-14 items-center justify-center bg-purple-500"
             animate={{
               scale: [1, 1.5, 1.5, 1, 1.5, 1.5, 1, 1],
