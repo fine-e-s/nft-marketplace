@@ -13,8 +13,6 @@ export default async function handler(req, res) {
       try {
         await createUserWithEmailAndPassword(auth, body.email, body.password);
         res.status(200).json({ message: "New user created." });
-        // For testing purpose
-        auth.currentUser.delete();
       } catch (err) {
         res.status(406).json({ message: "Invalid form." });
         console.error(err);
