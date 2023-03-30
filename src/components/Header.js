@@ -3,10 +3,23 @@ import Button from "./Button";
 import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useMenu } from "@/hooks/useMenu";
+import { useUser } from "@/hooks/useUser";
+import { createContext, useContext, useState } from "react";
+
+const LogOutContext = createContext(false);
 
 export default function Header() {
   const { isMenuOpened, menuToggle } = useMenu();
-  const { isRegOpened, regToggle } = useReg();
+  const { user } = useUser();
+
+  const [isLogOutOpened, setLogOut] = useState(false);
+
+  function logOutToggle() {
+    setLogOut(!isLogOutOpened);
+  }
+
+  //Log user object
+  console.log(user);
 
   if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
@@ -18,45 +31,37 @@ export default function Header() {
 
   return (
     <>
-      <div className="flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
-        <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pt-[40px] max-lg:pb-[40px] lg:w-max">
-          <Link href="/">
+      <LogOutContext.Provider value={{ isLogOutOpened, logOutToggle }}>
+        <div className="flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
+          <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pt-[40px] max-lg:pb-[40px] lg:w-max">
+            <Link href="/">
+              <img
+                src="icons/logo.svg"
+                className="hoverScale translate-y-[-2px] max-lg:translate-x-[4px]"
+                onClick={() => (isMenuOpened ? menuToggle() : "")}
+              />
+            </Link>
             <img
-              src="icons/logo.svg"
-              className="hoverScale translate-y-[-2px] max-lg:translate-x-[4px]"
-              onClick={() => (isMenuOpened ? menuToggle() : "")}
+              src="icons/menu.svg"
+              className={`cursor-pointer lg:hidden ${
+                isMenuOpened ? "bg-[#3b3b3b]" : ""
+              }`}
+              onClick={handleClick}
             />
-          </Link>
-          <img
-            src="icons/menu.svg"
-            className={`cursor-pointer lg:hidden ${
-              isMenuOpened ? "bg-[#3b3b3b]" : ""
-            }`}
-            onClick={handleClick}
-          />
+          </div>
+          <Menu isMenuOpened={isMenuOpened}>
+            <Link
+              href="/marketplace"
+              onClick={() => (isMenuOpened ? menuToggle() : "")}
+            >
+              <Button hoverUnderline>Marketplace</Button>
+            </Link>
+            <Button hoverUnderline>Ranking</Button>
+            <Button hoverUnderline>Connect a wallet</Button>
+            {user && user.logged ? <User /> : <SignUp />}
+          </Menu>
         </div>
-        <Menu isMenuOpened={isMenuOpened}>
-          <Link
-            href="/marketplace"
-            onClick={() => (isMenuOpened ? menuToggle() : "")}
-          >
-            <Button hoverUnderline>Marketplace</Button>
-          </Link>
-          <Button hoverUnderline>Ranking</Button>
-          <Button hoverUnderline>Connect a wallet</Button>
-          <Button
-            cta
-            hoverScale
-            onClick={() => {
-              regToggle();
-              isMenuOpened ? menuToggle() : "";
-            }}
-          >
-            <img src="icons/user.svg" style={{ background: "transparent" }} />
-            Sign Up
-          </Button>
-        </Menu>
-      </div>
+      </LogOutContext.Provider>
     </>
   );
 }
@@ -91,5 +96,52 @@ function MenuWrapper({ children, isMenuOpened }) {
     </div>
   ) : (
     <>{children}</>
+  );
+}
+
+function SignUp() {
+  const { isMenuOpened } = useMenu();
+  const { regToggle } = useReg();
+  return (
+    <Button
+      cta
+      hoverScale
+      onClick={() => {
+        regToggle();
+        isMenuOpened ? menuToggle() : "";
+      }}
+    >
+      <img src="icons/user.svg" style={{ background: "transparent" }} />
+      Sign Up
+    </Button>
+  );
+}
+
+function User() {
+  const { user } = useUser();
+  const { isLogOutOpened, logOutToggle } = useContext(LogOutContext);
+  return (
+    <>
+      <div className="flex items-center gap-4">
+        <Button cta hoverScale onClick={logOutToggle}>
+          <img src="icons/user.svg" style={{ background: "transparent" }} />
+          {user.user.email}
+        </Button>
+        {isLogOutOpened ? <LogOutButton /> : ""}
+      </div>
+    </>
+  );
+}
+
+function LogOutButton() {
+  function logOut() {
+    fetch("api/logout");
+  }
+  return (
+    <>
+      <Button cta hoverScale onClick={logOut}>
+        Log Out
+      </Button>
+    </>
   );
 }
