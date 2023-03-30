@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
@@ -32,7 +32,8 @@ function FormInput() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function signIn() {
+  function signUp() {
+    let status = null;
     fetch("api/login", {
       method: "POST",
       headers: {
@@ -40,10 +41,15 @@ function FormInput() {
       },
       body: JSON.stringify({ email: email, password: password }),
     })
-      .then((res) => res.json())
-      .then((data) => data && console.log(data.message))
+      .then((res) => {
+        status = res.status;
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.message);
+      })
       .finally(() => {
-        regToggle();
+        status === 200 && regToggle();
       });
   }
 
@@ -80,17 +86,26 @@ function FormInput() {
             </div>
           </div>
         </form>
-        <div className="mx-auto mb-6 flex">
+        <div className="mx-auto mb-6 flex gap-4">
           <Button
             cta
-            large
             hoverScale
             onClick={() => {
-              signIn();
+              signUp();
               document.getElementById("2").value = "";
             }}
           >
-            Submit!
+            Sign Up
+          </Button>
+          <Button
+            cta
+            hoverScale
+            onClick={() => {
+              signUp();
+              document.getElementById("2").value = "";
+            }}
+          >
+            Log In
           </Button>
         </div>
       </div>
