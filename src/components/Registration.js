@@ -34,9 +34,9 @@ function FormInput() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function signUp() {
+  function signIn(e) {
     let status = null;
-    fetch("api/login", {
+    fetch(`api/${e}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ function FormInput() {
             cta
             hoverScale
             onClick={() => {
-              signUp();
+              signIn("signup");
               document.getElementById("2").value = "";
             }}
           >
@@ -106,7 +106,7 @@ function FormInput() {
             cta
             hoverScale
             onClick={() => {
-              signUp();
+              signIn("login");
               document.getElementById("2").value = "";
             }}
           >
