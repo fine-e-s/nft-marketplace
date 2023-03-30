@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
@@ -28,7 +28,7 @@ export default function Registration() {
 }
 
 function FormInput() {
-  const { isRegOpened, regToggle } = useReg();
+  const { regToggle } = useReg();
   const { setUser } = useUser();
 
   const [email, setEmail] = useState("");
@@ -46,9 +46,6 @@ function FormInput() {
       .then((res) => {
         status = res.status;
         return res.json();
-      })
-      .then((data) => {
-        console.log(data.message);
       })
       .finally(() => {
         if (status === 200) {
