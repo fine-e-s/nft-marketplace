@@ -5,17 +5,14 @@ const UserContext = createContext(null);
 export function UserContextProvider({ children }) {
   const [user, setCurrentUser] = useState(null);
 
-  function setUser(user) {
-    setCurrentUser(user);
+  async function setUser() {
+    const res = await fetch("api/login");
+    const data = await res.json();
+    setCurrentUser(data);
   }
 
   useEffect(() => {
-    async function getUser() {
-      const res = await fetch("api/login");
-      const data = await res.json();
-      setUser(data);
-    }
-    getUser();
+    setUser();
   }, []);
 
   return (
