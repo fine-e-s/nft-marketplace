@@ -41,11 +41,9 @@ function FormInput() {
       body: JSON.stringify({ email: email, password: password }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          console.log(data.message);
-          regToggle();
-        }
+      .then((data) => data && console.log(data.message))
+      .finally(() => {
+        regToggle();
       });
   }
 
