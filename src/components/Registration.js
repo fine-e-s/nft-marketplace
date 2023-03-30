@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
+import { useUser } from "@/hooks/useUser";
 
 export default function Registration() {
   const { isRegOpened, regToggle } = useReg();
@@ -28,6 +29,7 @@ export default function Registration() {
 
 function FormInput() {
   const { isRegOpened, regToggle } = useReg();
+  const { setUser } = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,7 +51,10 @@ function FormInput() {
         console.log(data.message);
       })
       .finally(() => {
-        status === 200 && regToggle();
+        if (status === 200) {
+          regToggle();
+          setUser();
+        }
       });
   }
 
