@@ -1,12 +1,15 @@
 import { RegContextProvider } from "@/hooks/useReg";
 import { MenuContextProvider } from "@/hooks/useMenu";
+import { UserContextProvider } from "@/hooks/useUser";
 
 export default function Provider({ children }) {
   return (
     <>
-      <RegContextProvider>
-        <MenuContextProvider>{children}</MenuContextProvider>
-      </RegContextProvider>
+      <UserContextProvider>
+        <RegContextProvider>
+          <MenuContextProvider>{children}</MenuContextProvider>
+        </RegContextProvider>
+      </UserContextProvider>
     </>
   );
 }
