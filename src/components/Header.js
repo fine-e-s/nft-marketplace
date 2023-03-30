@@ -100,7 +100,7 @@ function MenuWrapper({ children, isMenuOpened }) {
 }
 
 function SignUp() {
-  const { isMenuOpened } = useMenu();
+  const { isMenuOpened, menuToggle } = useMenu();
   const { regToggle } = useReg();
   return (
     <Button
