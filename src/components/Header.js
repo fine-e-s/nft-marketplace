@@ -18,9 +18,6 @@ export default function Header() {
     setLogOut(!isLogOutOpened);
   }
 
-  //Log user object
-  console.log(user);
-
   if (useWindowSize().width >= 1100 && isMenuOpened) {
     menuToggle(false);
   }
@@ -134,8 +131,10 @@ function User() {
 }
 
 function LogOutButton() {
-  function logOut() {
-    fetch("api/logout");
+  const { setUser } = useUser();
+  async function logOut() {
+    await fetch("api/logout");
+    setUser();
   }
   return (
     <>
