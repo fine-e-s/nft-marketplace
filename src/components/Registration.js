@@ -63,7 +63,7 @@ function FormInput() {
             <label htmlFor="email" className="m-3 bg-inherit">
               Email:
             </label>
-            <div className="m-3 flex h-10 w-5/6 justify-self-end rounded-2xl border-2 border-lighter">
+            <div className="m-3 flex h-10 justify-self-end rounded-2xl border-2 border-lighter">
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
@@ -77,7 +77,7 @@ function FormInput() {
             <label htmlFor="password" className="m-3 bg-inherit">
               Password:
             </label>
-            <div className="m-3 flex h-10 w-5/6 justify-self-end rounded-2xl border-2 border-lighter">
+            <div className="m-3 flex h-10 justify-self-end rounded-2xl border-2 border-lighter">
               <input
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
