@@ -92,6 +92,7 @@ function FormInput() {
           <Button
             cta
             hoverScale
+            className={"w-40"}
             onClick={() => {
               signIn("signup");
               document.getElementById("2").value = "";
@@ -102,6 +103,7 @@ function FormInput() {
           <Button
             cta
             hoverScale
+            className={"w-40"}
             onClick={() => {
               signIn("login");
               document.getElementById("2").value = "";
