@@ -4,13 +4,13 @@ import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useMenu } from "@/hooks/useMenu";
 import { useUser } from "@/hooks/useUser";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const LogOutContext = createContext(false);
 
 export default function Header() {
   const { isMenuOpened, menuToggle } = useMenu();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
 
   const [isLogOutOpened, setLogOut] = useState(false);
 
@@ -25,6 +25,10 @@ export default function Header() {
   function handleClick() {
     menuToggle(isMenuOpened ? false : true);
   }
+
+  useEffect(() => {
+    setUser();
+  }, [user]);
 
   return (
     <>
