@@ -1,17 +1,25 @@
+import { useCategory } from "@/hooks/useCategory";
 import Link from "next/link";
 
 export default function Categories() {
+  const { category, newCategory } = useCategory();
+
   return (
-    <Link href="/marketplace">
-      <div className="my-[40px] flex flex-col gap-[60px]">
-        <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
-          Browse Categories
-        </div>
-        <div className="grid grid-cols-4 gap-[30px] max-md:grid-cols-2">
-          {categories.map((category, i) => (
-            <div
-              className="flex h-[210px] w-[150px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#3b3b3b] bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:border-[#3b3b3b] hover:bg-[#2b2b2b] lg:h-[320px] lg:w-[240px]"
-              key={category.name + i}
+    <div className="my-[40px] flex flex-col gap-[60px]">
+      <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
+        Browse Categories
+      </div>
+      <div className="grid grid-cols-4 gap-[30px] max-md:grid-cols-2">
+        {categories.map((category, i) => (
+          <div
+            className="flex h-[210px] w-[150px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#3b3b3b] bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:border-[#3b3b3b] hover:bg-[#2b2b2b] lg:h-[320px] lg:w-[240px]"
+            key={category.name + i}
+          >
+            <Link
+              href="/marketplace"
+              shallow
+              className="bg-inherit"
+              onClick={newCategory(category.name)}
             >
               <div className="flex items-center justify-center overflow-hidden">
                 <div
@@ -28,11 +36,11 @@ export default function Categories() {
               <div className="bg-inherit pl-[16px] pt-[22px] text-[14px] font-semibold leading-[1.4] lg:pl-[30px] lg:text-[22px]">
                 {category.name}
               </div>
-            </div>
-          ))}
-        </div>
+            </Link>
+          </div>
+        ))}
       </div>
-    </Link>
+    </div>
   );
 }
 
