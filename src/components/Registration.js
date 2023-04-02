@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
-import { useUser } from "@/hooks/useUser";
 
 export default function Registration() {
   const { isRegOpened, regToggle } = useReg();
@@ -29,31 +28,9 @@ export default function Registration() {
 
 function FormInput() {
   const { regToggle } = useReg();
-  const { setUser } = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function signIn(e) {
-    let status = null;
-    fetch(`api/${e}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, password: password }),
-    })
-      .then((res) => {
-        status = res.status;
-        return res.json();
-      })
-      .finally(() => {
-        if (status === 200) {
-          regToggle();
-          setUser();
-        }
-      });
-  }
 
   return (
     <>
@@ -94,7 +71,7 @@ function FormInput() {
             hoverScale
             className={"w-40"}
             onClick={() => {
-              signIn("signup");
+              signIn();
               document.getElementById("2").value = "";
             }}
           >
@@ -105,7 +82,7 @@ function FormInput() {
             hoverScale
             className={"w-40"}
             onClick={() => {
-              signIn("login");
+              signIn();
               document.getElementById("2").value = "";
             }}
           >
