@@ -3,14 +3,16 @@ import Button from "./Button";
 import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useMenu } from "@/hooks/useMenu";
-import { useUser } from "@/hooks/useUser";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/firebaseApp";
+import { AnimatePresence, motion, transform } from "framer-motion";
 
 const LogOutContext = createContext(false);
 
 export default function Header() {
   const { isMenuOpened, menuToggle } = useMenu();
-  const { user, setUser } = useUser();
+  const [user, loading] = useAuthState(auth);
 
   const [isLogOutOpened, setLogOut] = useState(false);
 
@@ -25,10 +27,6 @@ export default function Header() {
   function handleClick() {
     menuToggle(isMenuOpened ? false : true);
   }
-
-  useEffect(() => {
-    setUser();
-  }, [user]);
 
   return (
     <>
@@ -59,7 +57,7 @@ export default function Header() {
             </Link>
             <Button hoverUnderline>Ranking</Button>
             <Button hoverUnderline>Connect a wallet</Button>
-            {user && user.logged ? <User /> : <SignUp />}
+            {user ? <User /> : <SignUp />}
           </Menu>
         </div>
       </LogOutContext.Provider>
@@ -119,32 +117,50 @@ function SignUp() {
 }
 
 function User() {
-  const { user } = useUser();
   const { isLogOutOpened, logOutToggle } = useContext(LogOutContext);
+  const [user] = useAuthState(auth);
   return (
     <>
       <div className="flex items-center gap-4">
         <Button cta hoverScale onClick={logOutToggle}>
           <img src="icons/user.svg" style={{ background: "transparent" }} />
-          {user.user.email}
-        </Button>
-        {isLogOutOpened ? <LogOutButton /> : ""}
+          {user.email}
+        </Button>{" "}
+        <AnimatePresence>
+          {isLogOutOpened ? <LogOutButton /> : ""}
+        </AnimatePresence>
       </div>
     </>
   );
 }
 
 function LogOutButton() {
-  const { setUser } = useUser();
-  async function logOut() {
-    await fetch("api/logout");
-    setUser();
-  }
+  const { isLogOutOpened } = useContext(LogOutContext);
   return (
     <>
-      <Button cta hoverScale onClick={logOut}>
-        Log Out
-      </Button>
+      <motion.div
+        className="bg-transparent"
+        layout
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        key="logout"
+        transition={{ type: "spring", stiffness: 1000, damping: 40 }}
+        variants={{
+          initial: { opacity: 0, x: 100 },
+          animate: { opacity: 1, x: 0 },
+          exit: { opacity: -1, x: 100 },
+        }}
+      >
+        <Button
+          hoverScale
+          cta
+          className={"border-2 border-purple-500 !bg-lighter"}
+          onClick={() => auth.signOut()}
+        >
+          Log Out
+        </Button>
+      </motion.div>
     </>
   );
 }
