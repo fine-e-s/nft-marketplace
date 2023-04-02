@@ -6,6 +6,7 @@ import { useMenu } from "@/hooks/useMenu";
 import { createContext, useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebaseApp";
+import { AnimatePresence, motion, transform } from "framer-motion";
 
 const LogOutContext = createContext(false);
 
@@ -124,19 +125,42 @@ function User() {
         <Button cta hoverScale onClick={logOutToggle}>
           <img src="icons/user.svg" style={{ background: "transparent" }} />
           {user.email}
-        </Button>
-        {isLogOutOpened ? <LogOutButton /> : ""}
+        </Button>{" "}
+        <AnimatePresence>
+          {isLogOutOpened ? <LogOutButton /> : ""}
+        </AnimatePresence>
       </div>
     </>
   );
 }
 
 function LogOutButton() {
+  const { isLogOutOpened } = useContext(LogOutContext);
   return (
     <>
-      <Button cta hoverScale onClick={() => auth.signOut()}>
-        Log Out
-      </Button>
+      <motion.div
+        className="bg-transparent"
+        layout
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        key="logout"
+        transition={{ type: "spring", stiffness: 1000, damping: 40 }}
+        variants={{
+          initial: { opacity: 0, x: 100 },
+          animate: { opacity: 1, x: 0 },
+          exit: { opacity: -1, x: 100 },
+        }}
+      >
+        <Button
+          hoverScale
+          cta
+          className={"border-2 border-purple-500 !bg-lighter"}
+          onClick={() => auth.signOut()}
+        >
+          Log Out
+        </Button>
+      </motion.div>
     </>
   );
 }
