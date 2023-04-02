@@ -3,12 +3,15 @@ import Button from "./Button";
 import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useMenu } from "@/hooks/useMenu";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/firebaseApp";
 
 const LogOutContext = createContext(false);
 
 export default function Header() {
   const { isMenuOpened, menuToggle } = useMenu();
+  const [user, loading] = useAuthState(auth);
 
   const [isLogOutOpened, setLogOut] = useState(false);
 
@@ -53,7 +56,7 @@ export default function Header() {
             </Link>
             <Button hoverUnderline>Ranking</Button>
             <Button hoverUnderline>Connect a wallet</Button>
-            <SignUp />
+            {user ? <User /> : <SignUp />}
           </Menu>
         </div>
       </LogOutContext.Provider>
@@ -114,11 +117,13 @@ function SignUp() {
 
 function User() {
   const { isLogOutOpened, logOutToggle } = useContext(LogOutContext);
+  const [user] = useAuthState(auth);
   return (
     <>
       <div className="flex items-center gap-4">
         <Button cta hoverScale onClick={logOutToggle}>
           <img src="icons/user.svg" style={{ background: "transparent" }} />
+          {user.email}
         </Button>
         {isLogOutOpened ? <LogOutButton /> : ""}
       </div>
