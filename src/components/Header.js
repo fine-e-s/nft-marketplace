@@ -3,14 +3,12 @@ import Button from "./Button";
 import { useReg } from "@/hooks/useReg";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useMenu } from "@/hooks/useMenu";
-import { useUser } from "@/hooks/useUser";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const LogOutContext = createContext(false);
 
 export default function Header() {
   const { isMenuOpened, menuToggle } = useMenu();
-  const { user, setUser } = useUser();
 
   const [isLogOutOpened, setLogOut] = useState(false);
 
@@ -25,10 +23,6 @@ export default function Header() {
   function handleClick() {
     menuToggle(isMenuOpened ? false : true);
   }
-
-  useEffect(() => {
-    setUser();
-  }, [user]);
 
   return (
     <>
@@ -59,7 +53,7 @@ export default function Header() {
             </Link>
             <Button hoverUnderline>Ranking</Button>
             <Button hoverUnderline>Connect a wallet</Button>
-            {user && user.logged ? <User /> : <SignUp />}
+            <SignUp />
           </Menu>
         </div>
       </LogOutContext.Provider>
@@ -119,14 +113,12 @@ function SignUp() {
 }
 
 function User() {
-  const { user } = useUser();
   const { isLogOutOpened, logOutToggle } = useContext(LogOutContext);
   return (
     <>
       <div className="flex items-center gap-4">
         <Button cta hoverScale onClick={logOutToggle}>
           <img src="icons/user.svg" style={{ background: "transparent" }} />
-          {user.user.email}
         </Button>
         {isLogOutOpened ? <LogOutButton /> : ""}
       </div>
@@ -135,14 +127,9 @@ function User() {
 }
 
 function LogOutButton() {
-  const { setUser } = useUser();
-  async function logOut() {
-    await fetch("api/logout");
-    setUser();
-  }
   return (
     <>
-      <Button cta hoverScale onClick={logOut}>
+      <Button cta hoverScale>
         Log Out
       </Button>
     </>
