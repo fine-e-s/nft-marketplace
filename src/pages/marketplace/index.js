@@ -11,9 +11,7 @@ export default function Marketplace() {
       <Categories />
       <div className="flex w-full justify-center bg-lighter">
         <Suspense fallback={<Loading />}>
-          <CategoryContextProvider>
-            <Cards />
-          </CategoryContextProvider>
+          <Cards />
         </Suspense>
       </div>
     </>
