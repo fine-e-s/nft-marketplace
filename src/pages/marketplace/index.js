@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import Loading from "./loading";
 import Categories from "@/components/Categories";
-import { CategoryContextProvider } from "@/hooks/useCategory";
 
 const Cards = lazy(() => delayForDemo(import("@/components/Cards.js")));
 
