@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import Loading from "./loading";
 import Categories from "@/components/Categories";
+import { CategoryContextProvider } from "@/hooks/useCategory";
 
 const Cards = lazy(() => delayForDemo(import("@/components/Cards.js")));
 
@@ -10,7 +11,9 @@ export default function Marketplace() {
       <Categories />
       <div className="flex w-full justify-center bg-lighter">
         <Suspense fallback={<Loading />}>
-          <Cards />
+          <CategoryContextProvider>
+            <Cards />
+          </CategoryContextProvider>
         </Suspense>
       </div>
     </>
