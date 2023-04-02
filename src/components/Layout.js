@@ -7,8 +7,6 @@ import { auth } from "@/firebase/firebaseApp";
 export default function Layout({ children }) {
   const [user, loading] = useAuthState(auth);
 
-  console.log(loading);
-
   return (
     <>
       {!loading && (
