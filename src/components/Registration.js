@@ -81,28 +81,17 @@ function FormInput() {
             </div>
           </div>
         </form>
-        <div className="mx-auto mb-6 flex gap-4">
+        <div className="mx-5 mb-6 flex justify-center gap-4">
           <Button
             cta
             hoverScale
-            className={"w-40"}
+            className={"w-full"}
             onClick={() => {
               signUp(email, password);
               document.getElementById("2").value = "";
             }}
           >
             Sign Up
-          </Button>
-          <Button
-            cta
-            hoverScale
-            className={"w-40"}
-            onClick={() => {
-              signUp(email, password);
-              document.getElementById("2").value = "";
-            }}
-          >
-            Log In
           </Button>
         </div>
       </div>
