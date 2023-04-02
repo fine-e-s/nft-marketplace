@@ -15,9 +15,10 @@ export default function Cards() {
   useEffect(() => {
     async function fetchCards() {
       const marketplaceRef = collection(firestore, "marketplace");
-      const q = category
-        ? query(marketplaceRef, where("category", "==", category))
-        : query(marketplaceRef);
+      const q = query(
+        marketplaceRef,
+        category ? where("category", "==", category) : null
+      );
       const docs = await getDocs(q);
       const cards = new Array();
       docs.forEach((doc) => {
