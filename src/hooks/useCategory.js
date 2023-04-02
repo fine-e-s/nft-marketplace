@@ -1,12 +1,12 @@
 const { createContext, useState, useContext } = require("react");
 
-const CategoryContext = createContext("All");
+const CategoryContext = createContext(null);
 
 export function CategoryContextProvider({ children }) {
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState(null);
 
   function newCategory(category) {
-    category ? setCategory(category) : setCategory("");
+    category ? setCategory(category) : setCategory(null);
   }
 
   return (
