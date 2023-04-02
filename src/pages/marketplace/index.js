@@ -1,15 +1,19 @@
 import { Suspense, lazy } from "react";
 import Loading from "./loading";
+import Categories from "@/components/Categories";
 
 const Cards = lazy(() => delayForDemo(import("@/components/Cards.js")));
 
 export default function Marketplace() {
   return (
-    <div className="flex w-full justify-center bg-lighter">
-      <Suspense fallback={<Loading />}>
-        <Cards />
-      </Suspense>
-    </div>
+    <>
+      <Categories />
+      <div className="flex w-full justify-center bg-lighter">
+        <Suspense fallback={<Loading />}>
+          <Cards />
+        </Suspense>
+      </div>
+    </>
   );
 }
 
