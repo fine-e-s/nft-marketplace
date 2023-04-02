@@ -6,7 +6,7 @@ import { useMenu } from "@/hooks/useMenu";
 import { createContext, useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebaseApp";
-import { AnimatePresence, motion, transform } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const LogOutContext = createContext(false);
 
@@ -125,7 +125,7 @@ function User() {
         <Button cta hoverScale onClick={logOutToggle}>
           <img src="icons/user.svg" style={{ background: "transparent" }} />
           {user.email}
-        </Button>{" "}
+        </Button>
         <AnimatePresence>
           {isLogOutOpened ? <LogOutButton /> : ""}
         </AnimatePresence>
@@ -135,7 +135,6 @@ function User() {
 }
 
 function LogOutButton() {
-  const { isLogOutOpened } = useContext(LogOutContext);
   return (
     <>
       <motion.div
