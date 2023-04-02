@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { useReg } from "@/hooks/useReg";
 import Button from "./Button";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase/firebaseApp";
 
 export default function Registration() {
   const { isRegOpened, regToggle } = useReg();
@@ -31,6 +33,20 @@ function FormInput() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  async function signUp(email, password) {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(result.user);
+      regToggle();
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -71,7 +87,7 @@ function FormInput() {
             hoverScale
             className={"w-40"}
             onClick={() => {
-              signIn();
+              signUp(email, password);
               document.getElementById("2").value = "";
             }}
           >
@@ -82,7 +98,7 @@ function FormInput() {
             hoverScale
             className={"w-40"}
             onClick={() => {
-              signIn();
+              signUp(email, password);
               document.getElementById("2").value = "";
             }}
           >
