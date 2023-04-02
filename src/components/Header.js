@@ -134,7 +134,7 @@ function User() {
 function LogOutButton() {
   return (
     <>
-      <Button cta hoverScale>
+      <Button cta hoverScale onClick={() => auth.signOut()}>
         Log Out
       </Button>
     </>
