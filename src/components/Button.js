@@ -11,22 +11,22 @@ export default function Button({
   return (
     <div
       onClick={onClick}
-      className={`mx-[10px] cursor-pointer justify-center bg-inherit py-3 lg:mx-5 ${className} 
+      className={`mx-[10px] cursor-pointer justify-center bg-inherit py-3 lg:mx-5 
+      ${className} 
       ${
-        cta
-          ? "!mx-0 flex items-center gap-3 rounded-[20px] bg-purple-500 px-7 py-5 font-semibold"
-          : ""
-      } ${
-        large
-          ? "flex w-[224px] justify-center gap-3 rounded-[20px] bg-purple-500 px-5 py-12 font-semibold"
-          : ""
+        cta &&
+        "!mx-0 flex items-center gap-3 rounded-[20px] bg-purple-500 px-7 py-5 font-semibold"
+      } 
+      ${
+        large &&
+        "flex w-[224px] justify-center gap-3 rounded-[20px] bg-purple-500 px-5 py-12 font-semibold"
       }      
-      ${hoverScale ? "hoverScale" : ""}
-      ${hoverUnderline ? "group relative" : ""} 
-      ${larger ? "w-auto" : ""}`}
+      ${hoverScale && "hoverScale"}
+      ${hoverUnderline && "group relative"} 
+      ${larger && "w-auto"}`}
     >
       {children}
-      {hoverUnderline ? <div className="underline"></div> : ""}
+      {hoverUnderline && <div className="underline"></div>}
     </div>
   );
 }
