@@ -88,14 +88,16 @@ export function CategoriesMarketplace() {
               }}
             >
               <div className="flex items-center justify-center overflow-hidden"></div>
-              <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:pl-2 lg:text-[18px]">
+              <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:text-[18px]">
                 <Image
                   src={`icons/${item.icon}`}
                   width={24 * 2}
                   height={24 * 2}
                   className="scale-50 bg-transparent"
                 />
-                {item.name}
+                <div className="bg-inherit max-lg:-translate-x-1">
+                  {item.name}
+                </div>
               </div>
             </Link>
           </div>
