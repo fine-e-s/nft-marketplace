@@ -22,16 +22,13 @@ export default function Categories() {
             key={item.name + i}
           >
             <Link
-              href="/marketplace"
+              href={
+                category === item.name
+                  ? `/marketplace`
+                  : `/marketplace?categoryQuery=${item.name}`
+              }
               shallow
               className="bg-inherit"
-              onClick={() => {
-                if (item.name === category) {
-                  newCategory("");
-                } else {
-                  newCategory(item.name);
-                }
-              }}
             >
               <div className="flex items-center justify-center overflow-hidden">
                 <div
@@ -76,16 +73,13 @@ export function CategoriesMarketplace() {
             key={item.name + i}
           >
             <Link
-              href="/marketplace"
+              href={
+                category === item.name
+                  ? `/marketplace`
+                  : `/marketplace?categoryQuery=${item.name}`
+              }
               shallow
               className="justify-center bg-inherit"
-              onClick={() => {
-                if (item.name === category) {
-                  newCategory("");
-                } else {
-                  newCategory(item.name);
-                }
-              }}
             >
               <div className="flex items-center justify-center overflow-hidden"></div>
               <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:text-[18px]">
