@@ -67,7 +67,7 @@ export function CategoriesMarketplace() {
       <div className="grid grid-cols-4 gap-[20px] max-md:grid-cols-2">
         {categories.map((item, i) => (
           <div
-            className={`flex w-[160px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 bg-lighter bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:bg-darker lg:h-[320px] lg:w-[240px]
+            className={`flex w-[160px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 bg-lighter bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:bg-darker lg:w-[240px]
           ${
             item.name === category
               ? "border-gray-200 hover:border-gray-200"
@@ -88,7 +88,7 @@ export function CategoriesMarketplace() {
               }}
             >
               <div className="flex items-center justify-center overflow-hidden"></div>
-              <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:pl-[30px] lg:text-[22px]">
+              <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:pl-2 lg:text-[18px]">
                 <Image
                   src={`icons/${item.icon}`}
                   width={24 * 2}
