@@ -2,17 +2,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import { firestore } from "@/firebase/firebaseApp";
 import { useCategory } from "@/hooks/useCategory";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
+import { SearchContext } from "@/pages/marketplace";
 
 export default function Cards() {
   const { category, newCategory } = useCategory();
   const [data, setData] = useState(null);
   const [cardsLoading, setLoading] = useState(false);
 
+  const { prompt, setPrompt } = useContext(SearchContext);
+
   function handleData(data) {
     setData(data);
-    console.log(data);
   }
 
   useEffect(() => {
@@ -21,7 +23,9 @@ export default function Cards() {
       const marketplaceRef = collection(firestore, "marketplace");
       const q = query(
         marketplaceRef,
-        category ? where("category", "==", category) : null
+        category && where("category", "==", category),
+        where("name", ">=", prompt),
+        where("name", "<=", prompt + "\uf8ff")
       );
       const docs = await getDocs(q);
       const cards = new Array();
@@ -32,7 +36,7 @@ export default function Cards() {
       setLoading(false);
     }
     fetchCards();
-  }, [category]);
+  }, [category, prompt]);
 
   return (
     <>
