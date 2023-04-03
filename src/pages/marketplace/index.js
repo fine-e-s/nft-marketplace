@@ -3,7 +3,6 @@ import { useState, createContext } from "react";
 import Cards from "@/components/Cards";
 import { useRouter } from "next/router";
 import { useCategory } from "@/hooks/useCategory";
-import Search from "@/components/Search";
 
 export const SearchContext = createContext("");
 
@@ -19,7 +18,6 @@ export default function Marketplace() {
     <>
       <SearchContext.Provider value={{ prompt, setPrompt }}>
         <CategoriesMarketplace />
-        <Search />
         <Cards />
       </SearchContext.Provider>
     </>

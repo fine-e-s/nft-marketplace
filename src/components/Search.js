@@ -6,8 +6,8 @@ export default function Search() {
 
   return (
     <>
-      <div className="flex h-max w-full justify-center bg-transparent">
-        <div className="mb-8 flex h-12 w-[700px] items-center rounded-[20px] border-2 border-lighter bg-inherit">
+      <div className="h-max bg-transparent">
+        <div className="flex h-12 items-center rounded-[20px] border-2 border-lighter bg-inherit">
           <div className="mx-3 flex w-full bg-inherit">
             <input
               className="mx-2 w-full bg-inherit"
