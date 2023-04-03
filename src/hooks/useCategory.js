@@ -12,7 +12,7 @@ export function CategoryContextProvider({ children }) {
   }
 
   useEffect(() => {
-    newCategory(null);
+    router.pathname === "/" && newCategory(null);
   }, [router.pathname]);
 
   return (
