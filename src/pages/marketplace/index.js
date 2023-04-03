@@ -1,7 +1,11 @@
 import { CategoriesMarketplace } from "@/components/Categories";
+import { useState, createContext } from "react";
 import Cards from "@/components/Cards";
 import { useRouter } from "next/router";
 import { useCategory } from "@/hooks/useCategory";
+import Search from "@/components/Search";
+
+export const SearchContext = createContext("");
 
 export default function Marketplace() {
   const router = useRouter();
@@ -9,10 +13,15 @@ export default function Marketplace() {
   const { categoryQuery } = router.query;
   newCategory(categoryQuery);
 
+  const [prompt, setPrompt] = useState("");
+
   return (
     <>
-      <CategoriesMarketplace />
-      <Cards />
+      <SearchContext.Provider value={{ prompt, setPrompt }}>
+        <CategoriesMarketplace />
+        <Search />
+        <Cards />
+      </SearchContext.Provider>
     </>
   );
 }
