@@ -12,6 +12,7 @@ export default function Cards() {
 
   function handleData(data) {
     setData(data);
+    console.log(data);
   }
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Cards() {
         <AnimatePresence mode="wait">
           {cardsLoading ? (
             <Loading />
-          ) : (
+          ) : data.length > 0 ? (
             <div className="grid w-max gap-[30px] bg-inherit pt-[60px] pb-[80px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {data &&
                 data.map((dataElement, i) => (
@@ -93,6 +94,10 @@ export default function Cards() {
                     </div>
                   </motion.div>
                 ))}
+            </div>
+          ) : (
+            <div className="flex h-80 items-center bg-inherit">
+              Nothing found.
             </div>
           )}
         </AnimatePresence>
