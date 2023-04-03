@@ -44,3 +44,7 @@ input {
     @apply absolute block h-[4px] w-full translate-y-[2px] -translate-x-1/2 scale-x-0 bg-purple-500 transition duration-150 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}
