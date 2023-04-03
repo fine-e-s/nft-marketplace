@@ -1,25 +1,18 @@
-import { Suspense, lazy } from "react";
-import Loading from "./loading";
-import Categories, { CategoriesMarketplace } from "@/components/Categories";
-
-const Cards = lazy(() => delayForDemo(import("@/components/Cards.js")));
+import { CategoriesMarketplace } from "@/components/Categories";
+import Cards from "@/components/Cards";
+import { useRouter } from "next/router";
+import { useCategory } from "@/hooks/useCategory";
 
 export default function Marketplace() {
+  const router = useRouter();
+  const { category, newCategory } = useCategory();
+  const { categoryQuery } = router.query;
+  newCategory(categoryQuery);
+
   return (
     <>
       <CategoriesMarketplace />
-      <div className="flex w-full justify-center bg-lighter">
-        <Suspense fallback={<Loading />}>
-          <Cards />
-        </Suspense>
-      </div>
+      <Cards />
     </>
   );
-}
-
-async function delayForDemo(promise) {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
-  return promise;
 }
