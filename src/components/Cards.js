@@ -9,7 +9,7 @@ import { SearchContext } from "@/pages/marketplace";
 export default function Cards() {
   const { category, newCategory } = useCategory();
   const [data, setData] = useState(null);
-  const [cardsLoading, setLoading] = useState(false);
+  const [cardsLoading, setLoading] = useState(true);
 
   const { prompt, setPrompt } = useContext(SearchContext);
 
@@ -19,7 +19,6 @@ export default function Cards() {
 
   useEffect(() => {
     async function fetchCards() {
-      setLoading(true);
       const marketplaceRef = collection(firestore, "marketplace");
       const q = query(
         marketplaceRef,
