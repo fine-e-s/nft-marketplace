@@ -98,9 +98,16 @@ export default function Cards() {
               ))}
             </div>
           ) : (
-            <div className="flex h-80 items-center bg-inherit">
+            <motion.div
+              className="flex h-80 items-center bg-inherit"
+              key="nonefound"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 2 }}
+              transition={{ duration: 0.2 }}
+            >
               Nothing found.
-            </div>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
