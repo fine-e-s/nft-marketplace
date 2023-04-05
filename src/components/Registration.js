@@ -35,7 +35,11 @@ export default function Registration() {
             : "pointer-events-none scale-150 opacity-0"
         }`}
       >
-        {isSignUp ? <SignUpForm /> : <LogInForm setSignUp={setSignUp} />}
+        {isSignUp ? (
+          <SignUpForm setSignUp={setSignUp} />
+        ) : (
+          <LogInForm setSignUp={setSignUp} />
+        )}
       </div>
     </>
   );
@@ -120,7 +124,7 @@ function LogInForm({ setSignUp }) {
   );
 }
 
-function SignUpForm() {
+function SignUpForm({ setSignUp }) {
   const { regToggle } = useReg();
 
   const [email, setEmail] = useState("");
@@ -210,6 +214,14 @@ function SignUpForm() {
           >
             Sign Up
           </Button>
+        </div>
+        <div
+          className="mt-2 translate-y-1 cursor-pointer text-center text-sm text-light underline"
+          onClick={() => {
+            setSignUp(false);
+          }}
+        >
+          Already have an account?
         </div>
       </div>
     </>
