@@ -13,10 +13,13 @@ export default function Marketplace() {
   useEffect(() => newCategory(categoryQuery), [categoryQuery]);
 
   const [prompt, setPrompt] = useState("");
+  const [searchLoading, setSearchLoading] = useState(false);
 
   return (
     <>
-      <SearchContext.Provider value={{ prompt, setPrompt }}>
+      <SearchContext.Provider
+        value={{ prompt, setPrompt, searchLoading, setSearchLoading }}
+      >
         <CategoriesMarketplace />
         <Cards />
       </SearchContext.Provider>
