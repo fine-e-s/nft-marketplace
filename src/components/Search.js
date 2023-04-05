@@ -4,18 +4,17 @@ import Image from "next/image";
 
 export default function Search() {
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { searchLoading, setSearchLoading } = useContext(SearchContext);
   const { propmt, setPrompt } = useContext(SearchContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setPrompt(text);
-      setLoading(false);
     }, 700);
 
     return () => {
       clearTimeout(timer);
-      setLoading(true);
+      setSearchLoading(true);
     };
   }, [text]);
 
@@ -30,7 +29,7 @@ export default function Search() {
               placeholder="Search..."
               onChange={(e) => setText(e.target.value)}
             />
-            {loading ? (
+            {searchLoading ? (
               <Image
                 src="icons/loading.svg"
                 width={24}
