@@ -11,13 +11,14 @@ export default function Cards() {
   const [data, setData] = useState(null);
   const [cardsLoading, setLoading] = useState(true);
 
-  const { prompt, setPrompt } = useContext(SearchContext);
+  const { prompt, setPrompt, setSearchLoading } = useContext(SearchContext);
 
   function handleData(data) {
     setData(data);
   }
 
   useEffect(() => {
+    setSearchLoading(true);
     async function fetchCards() {
       const marketplaceRef = collection(firestore, "marketplace");
       const q = query(
@@ -33,6 +34,7 @@ export default function Cards() {
       });
       handleData(cards);
       setLoading(false);
+      setSearchLoading(false);
     }
     fetchCards();
   }, [category, prompt]);
