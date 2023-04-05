@@ -26,7 +26,7 @@ export default function Button({
       ${larger && "w-auto"}`}
     >
       {children}
-      {hoverUnderline && <div className="underline"></div>}
+      {hoverUnderline && <div className="hoverUnderline"></div>}
     </div>
   );
 }
