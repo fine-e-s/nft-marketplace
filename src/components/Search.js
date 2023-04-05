@@ -1,8 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "@/pages/marketplace";
+import Image from "next/image";
 
 export default function Search() {
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
   const { propmt, setPrompt } = useContext(SearchContext);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPrompt(text);
+      setLoading(false);
+    }, 700);
+
+    return () => {
+      clearTimeout(timer);
+      setLoading(true);
+    };
+  }, [text]);
 
   return (
     <>
@@ -13,9 +28,23 @@ export default function Search() {
               className="mx-2 w-full bg-inherit placeholder:text-lighter"
               type="search"
               placeholder="Search..."
-              onChange={(e) => setPrompt(e.target.value)}
+              onChange={(e) => setText(e.target.value)}
             />
-            <img src="icons/search.svg" className="bg-inherit" />
+            {loading ? (
+              <Image
+                src="icons/loading.svg"
+                width={24}
+                height={24}
+                className=" bg-transparent"
+              />
+            ) : (
+              <Image
+                src="icons/search.svg"
+                width={24}
+                height={24}
+                className="bg-transparent"
+              />
+            )}
           </div>
         </div>
       </div>
