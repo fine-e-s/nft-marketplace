@@ -11,6 +11,10 @@ export default function Marketplace() {
   const [prompt, setPrompt] = useState("");
   const [searchLoading, setSearchLoading] = useState(false);
 
+  const { search } = router.query;
+
+  useEffect(() => setPrompt(search), [search]);
+
   return (
     <>
       <SearchContext.Provider

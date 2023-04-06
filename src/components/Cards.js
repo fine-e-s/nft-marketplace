@@ -4,11 +4,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
 import { SearchContext } from "@/pages/marketplace";
+import { useRouter } from "next/router";
 
 export default function Cards() {
-  const { category, newCategory } = useCategory();
+  const router = useRouter();
+  const { categoryQuery } = router.query;
   const [data, setData] = useState(null);
-  const [cardsLoading, setLoading] = useState(true);
+  const [cardsLoading, setCardsLoading] = useState(true);
 
   const { prompt, setPrompt, setSearchLoading } = useContext(SearchContext);
 
@@ -20,23 +22,36 @@ export default function Cards() {
     setSearchLoading(true);
     async function fetchCards() {
       const marketplaceRef = collection(firestore, "marketplace");
-      const q = query(
-        marketplaceRef,
-        category && where("category", "==", category),
-        where("name", ">=", prompt),
-        where("name", "<=", prompt + "\uf8ff")
-      );
+      let q = query(marketplaceRef);
+
+      if (categoryQuery) {
+        q = query(q, where("category", "==", categoryQuery));
+      }
+
+      if (prompt) {
+        q = query(
+          q,
+          where("name", ">=", prompt),
+          where("name", "<=", prompt + "\uf8ff")
+        );
+      }
+
       const docs = await getDocs(q);
       const cards = new Array();
       docs.forEach((doc) => {
         cards.push(doc.data());
       });
       handleData(cards);
-      setLoading(false);
+      setCardsLoading(false);
       setSearchLoading(false);
     }
-    fetchCards();
-  }, [category, prompt]);
+
+    const timer = setTimeout(() => {
+      fetchCards();
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, [categoryQuery, prompt]);
 
   return (
     <>
