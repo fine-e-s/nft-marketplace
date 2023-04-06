@@ -1,22 +1,39 @@
 import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "@/pages/marketplace";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Search() {
+  const router = useRouter();
+  const { search } = router.query;
+
   const [text, setText] = useState("");
   const { searchLoading, setSearchLoading } = useContext(SearchContext);
-  const { propmt, setPrompt } = useContext(SearchContext);
+  const { prompt, setPrompt } = useContext(SearchContext);
 
   useEffect(() => {
+    setPrompt(text);
     const timer = setTimeout(() => {
-      setPrompt(text);
+      const newQuery = { ...router.query, search: text };
+
+      if (!text) {
+        delete newQuery.search;
+      }
+
+      router.push({
+        query: newQuery,
+      });
     }, 700);
 
     return () => {
-      clearTimeout(timer);
       setSearchLoading(true);
+      clearTimeout(timer);
     };
   }, [text]);
+
+  useEffect(() => {
+    setText(search);
+  }, [search]);
 
   return (
     <>
@@ -27,6 +44,7 @@ export default function Search() {
               className="mx-2 w-full bg-inherit placeholder:text-lighter"
               type="search"
               placeholder="Search..."
+              defaultValue={search}
               onChange={(e) => setText(e.target.value)}
             />
             {searchLoading ? (
