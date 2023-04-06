@@ -1,4 +1,3 @@
-import { useCategory } from "@/hooks/useCategory";
 import Search from "./Search";
 import Link from "next/link";
 import Image from "next/image";

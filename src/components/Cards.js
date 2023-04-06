@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { firestore } from "@/firebase/firebaseApp";
-import { useCategory } from "@/hooks/useCategory";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
