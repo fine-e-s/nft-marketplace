@@ -68,7 +68,7 @@ function ButtonStart() {
         isMenuOpened ? menuToggle(false) : "";
       }}
     >
-      <img src="icons/rocket.svg" style={{ background: "transparent" }} />
+      <img src="icons/rocket.svg" alt="rocket" style={{ background: "transparent" }} />
       Get Started
     </Button>
   );

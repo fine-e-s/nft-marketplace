@@ -40,6 +40,7 @@ export default function Categories() {
               <div className="fixed bg-transparent">
                 <img
                   src={`icons/${item.icon}`}
+                  alt={`${item.name} category`}
                   className="bg-transparent max-lg:scale-75 lg:scale-100"
                 />
               </div>
@@ -91,6 +92,7 @@ export function CategoriesMarketplace() {
             <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:text-[18px]">
               <Image
                 src={`icons/${item.icon}`}
+                alt={`${item.name} category`}
                 width={24 * 2}
                 height={24 * 2}
                 className="scale-50 bg-transparent"

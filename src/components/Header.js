@@ -36,12 +36,14 @@ export default function Header() {
             <Link href="/">
               <img
                 src="icons/logo.svg"
+                alt="logo"
                 className="hoverScale translate-y-[-2px] max-lg:translate-x-[4px]"
                 onClick={() => (isMenuOpened ? menuToggle() : "")}
               />
             </Link>
             <img
               src="icons/menu.svg"
+              alt="menu"
               className={`cursor-pointer lg:hidden ${
                 isMenuOpened ? "bg-[#3b3b3b]" : ""
               }`}
@@ -110,7 +112,11 @@ function SignUp() {
         isMenuOpened ? menuToggle() : "";
       }}
     >
-      <img src="icons/user.svg" style={{ background: "transparent" }} />
+      <img
+        src="icons/user.svg"
+        alt="user"
+        style={{ background: "transparent" }}
+      />
       Sign Up
     </Button>
   );
@@ -123,7 +129,11 @@ function User() {
     <>
       <div className="flex items-center gap-4">
         <Button cta hoverScale onClick={logOutToggle}>
-          <img src="icons/user.svg" style={{ background: "transparent" }} />
+          <img
+            src="icons/user.svg"
+            alt="user"
+            style={{ background: "transparent" }}
+          />
           {user.email}
         </Button>
         <AnimatePresence>
