@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { firestore } from "@/firebase/firebaseApp";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, getDoc } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
 import { SearchContext } from "@/pages/marketplace";
@@ -38,10 +38,14 @@ export default function Cards() {
 
       const docs = await getDocs(q);
       const cards = new Array();
-      docs.forEach((doc) => {
-        cards.push(doc.data());
-      });
+      for (let [key, value] of Object.entries(docs.docs)) {
+        const docData = value.data();
+        docData.user = (await getDoc(docData.user)).data();
+        cards.push(docData);
+      }
+
       handleData(cards);
+
       setCardsLoading(false);
       setSearchLoading(false);
     }
@@ -83,11 +87,11 @@ export default function Cards() {
                         <div
                           className="h-[24px] w-[24px] rounded-full bg-inherit bg-cover bg-center"
                           style={{
-                            backgroundImage: `url(images/avatar-1.png)`,
+                            backgroundImage: `url(${dataElement.user.avatar})`,
                           }}
                         ></div>
                         <div className="bg-inherit font-mono text-[16px] font-extralight leading-[1.4]">
-                          {dataElement.creator}
+                          {dataElement.user.username}
                         </div>
                       </div>
                     </div>
