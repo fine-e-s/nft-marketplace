@@ -65,10 +65,14 @@ export function CategoriesMarketplace() {
       delete newQuery.categoryQuery;
     }
 
-    router.push({
-      pathname: "marketplace",
-      query: newQuery,
-    });
+    router.push(
+      {
+        pathname: "marketplace",
+        query: newQuery,
+      },
+      undefined,
+      { shallow: true }
+    );
   }
 
   return (
