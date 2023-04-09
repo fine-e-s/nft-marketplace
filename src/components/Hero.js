@@ -2,6 +2,8 @@ import Button from "./Button";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { useReg } from "@/hooks/useReg";
 import { useMenu } from "@/hooks/useMenu";
+import { gsap } from "gsap";
+import { useEffect } from "react";
 
 export default function Hero() {
   return (
@@ -68,7 +70,11 @@ function ButtonStart() {
         isMenuOpened ? menuToggle(false) : "";
       }}
     >
-      <img src="icons/rocket.svg" alt="rocket" style={{ background: "transparent" }} />
+      <img
+        src="icons/rocket.svg"
+        alt="rocket"
+        style={{ background: "transparent" }}
+      />
       Get Started
     </Button>
   );
@@ -106,21 +112,59 @@ function Numbers() {
 }
 
 function Selected() {
+  useEffect(() => {
+    let tl = gsap.timeline({ repeat: -1, yoyo: true });
+    tl.to(
+      "#selected",
+      {
+        y: -20,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+      },
+      0
+    ).to(
+      "#selected-shade",
+      {
+        scale: 1.08,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: true,
+      },
+      0
+    );
+  }, []);
+
   return (
-    <div className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]">
-      <div className="bg-[url(/images/hero.png)] bg-cover bg-center max-md:h-[205px] md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]" />
-      <div className="my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
-        <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
-          Space Walking
-        </div>
-        <div className="flex gap-[12px] bg-inherit">
-          <div className="h-[24px] w-[24px] rounded-[120px] bg-inherit bg-[url(/images/avatar-1.png)] bg-cover bg-center" />
-          <div className="bg-inherit text-[16px] font-normal leading-[1.4]">
-            Animakid
+    <>
+      <div className="flex flex-col">
+        <div
+          className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] shadow-lg shadow-zinc-900 transition-shadow duration-500 will-change-transform hover:shadow-md hover:shadow-zinc-400 md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]"
+          id="selected"
+          onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.05 })}
+          onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
+        >
+          <div className="bg-[url(/images/hero.png)] bg-cover bg-center max-md:h-[205px] md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]" />
+          <div className="my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
+            <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
+              Space Walking
+            </div>
+            <div className="flex gap-[12px] bg-inherit">
+              <div className="h-[24px] w-[24px] rounded-[120px] bg-inherit bg-[url(/images/avatar-1.png)] bg-cover bg-center" />
+              <div className="bg-inherit text-[16px] font-normal leading-[1.4]">
+                Animakid
+              </div>
+            </div>
           </div>
         </div>
+        <div
+          className="h-10 translate-y-5 bg-zinc-900 opacity-50 blur-sm will-change-transform"
+          id="selected-shade"
+          style={{ borderRadius: "50%" }}
+        ></div>
       </div>
-    </div>
+    </>
   );
 }
 
