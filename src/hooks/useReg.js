@@ -20,6 +20,7 @@ export function RegContextProvider({ children }) {
       );
     } else {
       gsap.set("[data-loginform]", { x: 0, autoAlpha: 1 });
+      gsap.set("[data-signupform]", { autoAlpha: 0 });
       gsap.fromTo(
         "[data-regform]",
         { scale: 1, autoAlpha: 0 },
