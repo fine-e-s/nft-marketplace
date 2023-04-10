@@ -3,18 +3,43 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { useReg } from "@/hooks/useReg";
 import { useMenu } from "@/hooks/useMenu";
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export default function Hero() {
-  useEffect(() => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useLayoutEffect(() => {
     gsap.fromTo(
       "[data-slidein]",
       { x: -200, opacity: 0 },
       { x: 0, delay: 0.2, stagger: 0.1, opacity: 1 }
     );
-
     gsap.fromTo("[data-fadein]", { opacity: 0 }, { delay: 1, opacity: 1 });
-  }, []);
+
+    let tl = gsap.timeline({ repeat: -1, yoyo: true });
+    tl.to(
+      "#selected",
+      {
+        y: -20,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+      },
+      0
+    ).to(
+      "#selected-shade",
+      {
+        scale: 1.08,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: true,
+      },
+      0
+    );
+
+    setIsAnimating(true);
+  }, [isAnimating]);
 
   return (
     <div className="my-[40px] flex h-auto items-center justify-center max-md:mx-[30px]">
@@ -130,30 +155,6 @@ function Numbers() {
 }
 
 function Selected() {
-  useEffect(() => {
-    let tl = gsap.timeline({ repeat: -1, yoyo: true });
-    tl.to(
-      "#selected",
-      {
-        y: -20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-      },
-      0
-    ).to(
-      "#selected-shade",
-      {
-        scale: 1.08,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: true,
-      },
-      0
-    );
-  }, []);
-
   return (
     <>
       <div data-fadein className="flex flex-col">
