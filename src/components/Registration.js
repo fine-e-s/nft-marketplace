@@ -26,12 +26,14 @@ export default function Registration() {
         { x: 300, autoAlpha: 0, ease: "none" },
         { x: 0, autoAlpha: 1, duration: 0.2, ease: "none" }
       )
-      .eventCallback("onStart", setAnimating(true))
-      .eventCallback("onComplete", setAnimating(false));
+      .eventCallback("onComplete", () => setAnimating(false))
+      .eventCallback("onReverseComplete", () => setAnimating(false));
 
     if (currentForm === "login") {
+      setAnimating(true);
       switchFormTL.play();
     } else if (currentForm === "signup") {
+      setAnimating(true);
       switchFormTL.reverse(0);
     }
   }
@@ -134,7 +136,7 @@ function LogInForm({ gsapSwitchForm, isAnimating }) {
           <div
             className="mt-2 translate-y-1 cursor-pointer text-center text-sm text-light underline"
             onClick={() => {
-              gsapSwitchForm("login");
+              !isAnimating && gsapSwitchForm("login");
             }}
           >
             Don't have an account?
@@ -244,7 +246,7 @@ function SignUpForm({ gsapSwitchForm, isAnimating }) {
           <div
             className="mt-2 translate-y-1 cursor-pointer text-center text-sm text-light underline"
             onClick={() => {
-              gsapSwitchForm("signup");
+              !isAnimating && gsapSwitchForm("signup");
             }}
           >
             Already have an account?
