@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 
-export function useWindowSize() {
+const WindowSizeContext = createContext({
+  height: undefined,
+  width: undefined,
+});
+
+export function WindowSizeContextProvider({ children }) {
   const [sizes, setSizes] = useState({
     height: undefined,
     width: undefined,
@@ -20,5 +25,13 @@ export function useWindowSize() {
     };
   }, []);
 
-  return sizes;
+  return (
+    <WindowSizeContext.Provider value={sizes}>
+      {children}
+    </WindowSizeContext.Provider>
+  );
+}
+
+export function useWindowSize() {
+  return useContext(WindowSizeContext);
 }
