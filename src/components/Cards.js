@@ -67,7 +67,7 @@ export default function Cards() {
             <div className="grid w-max gap-[30px] bg-inherit pt-[60px] pb-[80px] sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {data.map((dataElement, i) => (
                 <motion.div
-                  className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#2b2b2b] bg-clip-content transition duration-300 ease-in-out hover:scale-105 hover:border-[#2b2b2b] hover:bg-[#3b3b3b]"
+                  className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#2b2b2b] bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:border-[#2b2b2b] hover:bg-[#3b3b3b]"
                   key={dataElement.name + i}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
