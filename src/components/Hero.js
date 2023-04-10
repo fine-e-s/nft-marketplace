@@ -6,6 +6,16 @@ import { gsap } from "gsap";
 import { useEffect } from "react";
 
 export default function Hero() {
+  useEffect(() => {
+    gsap.fromTo(
+      "[data-slideIn]",
+      { x: -200, opacity: 0 },
+      { x: 0, delay: 0.2, stagger: 0.1, opacity: 1 }
+    );
+
+    gsap.fromTo("[data-fadeIn]", { opacity: 0 }, { delay: 1, opacity: 1 });
+  }, []);
+
   return (
     <div className="my-[40px] flex h-auto items-center justify-center max-md:mx-[30px]">
       <div className="flex justify-center gap-[30px] max-md:flex-col">
@@ -44,10 +54,13 @@ function HeroBlock() {
 function Headlines() {
   return (
     <div className="flex flex-col gap-[20px]">
-      <div className="font-semibold leading-[1.1] max-md:text-[28px] md:text-[38px] lg:text-[67px]">
+      <div
+        data-slideIn
+        className="font-semibold leading-[1.1] max-md:text-[28px] md:text-[38px] lg:text-[67px]"
+      >
         Discover Digital Art &amp; Collect NFTs
       </div>
-      <div className="leading-[1.6] md:text-[16px] lg:text-[22px]">
+      <div data-slideIn className="leading-[1.6] md:text-[16px] lg:text-[22px]">
         NFT marketplace UI created with Anima for Figma. Collect, buy and sell
         art from more than 20k NFT artists.
       </div>
@@ -60,29 +73,34 @@ function ButtonStart() {
   const { isMenuOpened, menuToggle } = useMenu();
 
   return (
-    <Button
-      cta
-      large
-      larger={useWindowSize().width < 768}
-      hoverScale
-      onClick={() => {
-        regToggle();
-        isMenuOpened ? menuToggle(false) : "";
-      }}
-    >
-      <img
-        src="icons/rocket.svg"
-        alt="rocket"
-        style={{ background: "transparent" }}
-      />
-      Get Started
-    </Button>
+    <div data-slideIn className="bg-transparent">
+      <Button
+        cta
+        large
+        larger={useWindowSize().width < 768}
+        hoverScale
+        onClick={() => {
+          regToggle();
+          isMenuOpened ? menuToggle(false) : "";
+        }}
+      >
+        <img
+          src="icons/rocket.svg"
+          alt="rocket"
+          style={{ background: "transparent" }}
+        />
+        Get Started
+      </Button>
+    </div>
   );
 }
 
 function Numbers() {
   return (
-    <div className="flex flex-row max-md:justify-between lg:md:gap-[30px]">
+    <div
+      data-slideIn
+      className="flex flex-row max-md:justify-between lg:md:gap-[30px]"
+    >
       <div className="flex flex-col justify-start md:w-[90px] lg:w-[150px]">
         <div className="font-mono font-bold leading-[1.4] max-md:text-[22px] lg:text-[28px]">
           240k+
@@ -138,7 +156,7 @@ function Selected() {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div data-fadeIn className="flex flex-col">
         <div
           className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] shadow-lg shadow-zinc-900 transition-shadow duration-500 will-change-transform hover:shadow-md hover:shadow-zinc-400 md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]"
           id="selected"
