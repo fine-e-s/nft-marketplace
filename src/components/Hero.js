@@ -24,16 +24,17 @@ export default function Hero() {
         duration: 3,
         repeat: -1,
         yoyo: true,
+        ease: "sine.inOut",
       },
       0
     ).to(
       "#selected-shade",
       {
-        scale: 1.08,
+        scaleX: 1.09,
         duration: 3,
         repeat: -1,
         yoyo: true,
-        ease: true,
+        ease: "sine.inOut",
       },
       0
     );
@@ -180,7 +181,7 @@ function Selected() {
         <div
           className="h-10 translate-y-5 bg-zinc-900 opacity-50 blur-sm will-change-transform"
           id="selected-shade"
-          style={{ borderRadius: "50%" }}
+          style={{ borderRadius: "50%", scale: "1.05" }}
         ></div>
       </div>
     </>
