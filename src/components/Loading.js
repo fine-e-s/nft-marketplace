@@ -25,10 +25,10 @@ function Squares() {
     out.push(
       <React.Fragment key={i}>
         <div
-          className="flex h-14 w-14 items-center justify-center rounded-md bg-purple-500"
+          className="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-500"
           id="square"
         >
-          <div className="h-5 w-5 rounded-md bg-lighter" />
+          <div className="h-10 w-10 rounded-xl bg-lighter" />
         </div>
       </React.Fragment>
     );
