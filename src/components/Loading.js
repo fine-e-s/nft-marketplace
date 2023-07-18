@@ -8,8 +8,8 @@ export default function Loading() {
     tl1.to(
       "#square",
       {
-        rotation: 360,
-        duration: 1,
+        rotation: 90,
+        duration: 0.5,
         ease: "power1.inOut",
         stagger: 0.3,
       },
@@ -19,8 +19,8 @@ export default function Loading() {
       .to(
         "#square",
         {
-          scale: 2,
-          duration: 1,
+          scale: 1.5,
+          duration: 0.5,
           ease: "power1.inOut",
           stagger: 0.3,
         },
@@ -28,7 +28,7 @@ export default function Loading() {
       )
       .to("#square", {
         scale: 1,
-        duration: 1,
+        duration: 0.5,
         ease: "power1.inOut",
         stagger: 0.3,
       });
@@ -44,7 +44,7 @@ export default function Loading() {
 function Squares() {
   let out = [];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 10; i++) {
     out.push(
       <div
         className="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-500"
