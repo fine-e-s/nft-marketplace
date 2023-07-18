@@ -6,7 +6,6 @@ import { useMenu } from "@/hooks/useMenu";
 import { createContext, useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebaseApp";
-import { AnimatePresence, motion } from "framer-motion";
 
 const LogOutContext = createContext(false);
 
@@ -32,7 +31,7 @@ export default function Header() {
     <>
       <LogOutContext.Provider value={{ isLogOutOpened, logOutToggle }}>
         <div className="flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
-          <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pt-[40px] max-lg:pb-[40px] lg:w-max">
+          <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pb-[40px] max-lg:pt-[40px] lg:w-max">
             <Link href="/">
               <img
                 src="icons/logo.svg"
@@ -136,9 +135,7 @@ function User() {
           />
           {user.email}
         </Button>
-        <AnimatePresence>
-          {isLogOutOpened ? <LogOutButton /> : ""}
-        </AnimatePresence>
+        {isLogOutOpened ? <LogOutButton /> : ""}
       </div>
     </>
   );
@@ -147,20 +144,7 @@ function User() {
 function LogOutButton() {
   return (
     <>
-      <motion.div
-        className="bg-transparent"
-        layout
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        key="logout"
-        transition={{ type: "spring", stiffness: 1000, damping: 40 }}
-        variants={{
-          initial: { opacity: 0, x: 100 },
-          animate: { opacity: 1, x: 0 },
-          exit: { opacity: -1, x: 100 },
-        }}
-      >
+      <div className="bg-transparent" layout>
         <Button
           hoverScale
           cta
@@ -169,7 +153,7 @@ function LogOutButton() {
         >
           Log Out
         </Button>
-      </motion.div>
+      </div>
     </>
   );
 }
