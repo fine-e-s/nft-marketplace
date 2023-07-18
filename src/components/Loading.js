@@ -9,9 +9,9 @@ export default function Loading() {
       "#square",
       {
         rotation: 90,
-        duration: 0.5,
+        duration: 0.2,
         ease: "power1.inOut",
-        stagger: 0.3,
+        stagger: 0.05,
       },
       0
     );
@@ -20,17 +20,17 @@ export default function Loading() {
         "#square",
         {
           scale: 1.5,
-          duration: 0.5,
+          duration: 0.2,
           ease: "power1.inOut",
-          stagger: 0.3,
+          stagger: 0.05,
         },
         0
       )
       .to("#square", {
         scale: 1,
-        duration: 0.5,
+        duration: 0.2,
         ease: "power1.inOut",
-        stagger: 0.3,
+        stagger: 0.05,
       });
   }, []);
 
@@ -44,14 +44,14 @@ export default function Loading() {
 function Squares() {
   let out = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 6; i++) {
     out.push(
       <div
-        className="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-500"
+        className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500"
         id="square"
         key={i}
       >
-        <div className="h-10 w-10 rounded-md bg-lighter" />
+        <div className="h-7 w-7 rounded-md bg-lighter" />
       </div>
     );
   }
