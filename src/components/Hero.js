@@ -158,7 +158,7 @@ function Numbers() {
 function Selected() {
   return (
     <>
-      <div data-fadein className="flex flex-col">
+      <div data-fadein className="flex flex-col items-center">
         <div
           className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] shadow-lg shadow-zinc-900 transition-shadow duration-500 will-change-transform hover:shadow-md hover:shadow-zinc-400 md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]"
           id="selected"
@@ -179,7 +179,7 @@ function Selected() {
           </div>
         </div>
         <div
-          className="h-10 translate-y-5 bg-zinc-900 opacity-50 blur-sm will-change-transform"
+          className="h-10 w-3/4 translate-y-5 bg-zinc-900 opacity-50 blur-sm will-change-transform"
           id="selected-shade"
           style={{ borderRadius: "50%", scale: "1.05" }}
         ></div>
