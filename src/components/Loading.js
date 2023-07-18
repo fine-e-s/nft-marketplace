@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function Loading() {
-  let tl = gsap.timeline({ repeat: -1 });
-  tl.to("#square", {
-    rotation: 90,
-    duration: 0.5,
-    scale: 1.1,
-    ease: "none",
-    stagger: 0.2,
-  });
+  useEffect(() => {
+    let tl1 = gsap.timeline({ repeat: -1 });
+    let tl2 = gsap.timeline({ repeat: -1 });
+    tl1.to(
+      "#square",
+      {
+        rotation: 360,
+        duration: 1,
+        ease: "power1.inOut",
+        stagger: 0.3,
+      },
+      0
+    );
+    tl2
+      .to(
+        "#square",
+        {
+          scale: 2,
+          duration: 1,
+          ease: "power1.inOut",
+          stagger: 0.3,
+        },
+        0
+      )
+      .to("#square", {
+        scale: 1,
+        duration: 1,
+        ease: "power1.inOut",
+        stagger: 0.3,
+      });
+  }, []);
 
   return (
     <div className="flex h-96 w-4/5 items-center justify-between bg-inherit">
@@ -23,14 +46,13 @@ function Squares() {
 
   for (let i = 0; i < 3; i++) {
     out.push(
-      <React.Fragment key={i}>
-        <div
-          className="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-500"
-          id="square"
-        >
-          <div className="h-10 w-10 rounded-xl bg-lighter" />
-        </div>
-      </React.Fragment>
+      <div
+        className="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-500"
+        id="square"
+        key={i}
+      >
+        <div className="h-10 w-10 rounded-md bg-lighter" />
+      </div>
     );
   }
   return out;
