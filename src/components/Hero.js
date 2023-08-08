@@ -160,7 +160,7 @@ function Selected() {
     <>
       <div data-fadein className="flex flex-col items-center">
         <div
-          className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] shadow-lg shadow-zinc-900 transition-shadow duration-500 will-change-transform hover:shadow-md hover:shadow-zinc-400 md:h-[330px] md:w-[330px] lg:h-[510px] lg:w-[510px]"
+          className="flex flex-col overflow-hidden rounded-[20px] bg-[#3b3b3b] shadow-lg shadow-zinc-900 transition-shadow duration-500 will-change-transform hover:shadow-md hover:shadow-zinc-400 max-md:w-[330px] md:h-[330px] lg:h-[510px] lg:w-[510px]"
           id="selected"
           onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.05 })}
           onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
