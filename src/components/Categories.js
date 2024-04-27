@@ -14,7 +14,7 @@ export default function Categories() {
   }
 
   return (
-    <div className="my-[40px] flex flex-col gap-[60px]">
+    <div className="my-[40px] flex flex-col gap-[60px] opacity-0" id="section">
       <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
         Browse Categories
       </div>
@@ -33,10 +33,14 @@ export default function Categories() {
               className="flex items-center justify-center overflow-hidden"
               onClick={() => handleCategoryClick(item.name)}
             >
-              <div
-                className="h-[142px] w-[150px] scale-[1.1] bg-inherit bg-cover bg-center blur-[8px] contrast-[.90] lg:h-[240px] lg:w-[240px]"
-                style={{ backgroundImage: `url(images/${item.img})` }}
-              />
+              <div className="h-[142px] w-[150px] scale-[1.1] bg-inherit bg-cover bg-center blur-[8px] contrast-[.90] lg:h-[240px] lg:w-[240px]">
+                <Image
+                  src={`/images/${item.img}`}
+                  width={240}
+                  height={240}
+                  loading="eager"
+                />
+              </div>
               <div className="fixed bg-transparent">
                 <img
                   src={`icons/${item.icon}`}
@@ -116,42 +120,42 @@ export function CategoriesMarketplace() {
 const categories = [
   {
     name: "Art",
-    img: "art.png",
+    img: "Image Placeholder_1.png",
     icon: "art.svg",
   },
   {
     name: "Collectibles",
-    img: "collectibles.png",
+    img: "Image Placeholder_2.png",
     icon: "collectibles.svg",
   },
   {
     name: "Music",
-    img: "music.png",
+    img: "Image Placeholder_3.png",
     icon: "music.svg",
   },
   {
     name: "Photography",
-    img: "photography.png",
+    img: "Image Placeholder_4.png",
     icon: "photography.svg",
   },
   {
     name: "Video",
-    img: "video.png",
+    img: "Image Placeholder_5.png",
     icon: "video.svg",
   },
   {
     name: "Utility",
-    img: "utility.png",
+    img: "Image Placeholder_6.png",
     icon: "utility.svg",
   },
   {
     name: "Sport",
-    img: "sport.png",
+    img: "Image Placeholder_7.png",
     icon: "sport.svg",
   },
   {
     name: "Virtual Worlds",
-    img: "virtual-worlds.png",
+    img: "Image Placeholder_8.png",
     icon: "virtual-worlds.svg",
   },
 ];

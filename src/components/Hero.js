@@ -4,6 +4,7 @@ import { useReg } from "@/hooks/useReg";
 import { useMenu } from "@/hooks/useMenu";
 import { gsap } from "gsap";
 import { useLayoutEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -43,10 +44,8 @@ export default function Hero() {
   }, [isAnimating]);
 
   return (
-    <div className="my-[40px] flex h-auto items-center justify-center max-md:mx-[30px]">
-      <div className="flex justify-center gap-[30px] max-md:flex-col">
-        <HeroBlock />
-      </div>
+    <div className=" flex h-screen items-center justify-center gap-[30px] max-md:mx-[30px] max-md:flex-col">
+      <HeroBlock />
     </div>
   );
 }
@@ -165,8 +164,16 @@ function Selected() {
           onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.05 })}
           onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1 })}
         >
-          <div className="bg-[url(/images/hero.png)] bg-cover bg-center max-md:h-[205px] md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]" />
-          <div className="my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
+          <div className=" bg-cover bg-center max-md:h-[205px] md:h-[221px] md:w-[330px] lg:h-[400px] lg:w-[510px]">
+            <Image
+              src={"/images/Image Placeholder.png"}
+              width={510}
+              height={400}
+              style={{ transform: "translateY(-10%)" }}
+              loading="eager"
+            />
+          </div>
+          <div className="z-10 my-auto flex flex-col justify-center gap-[10px] bg-inherit px-[20px] py-[22px]">
             <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
               Space Walking
             </div>
