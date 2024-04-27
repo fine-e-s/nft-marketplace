@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <>
       <LogOutContext.Provider value={{ isLogOutOpened, logOutToggle }}>
-        <div className="absolute z-50 flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
+        <div className="absolute z-40 flex h-auto w-full flex-col items-start gap-[16px] bg-darker py-4 max-lg:gap-0 max-lg:py-0 lg:my-0 lg:h-24 lg:w-full lg:flex-row lg:items-center">
           <div className="z-10 flex w-full flex-row items-center justify-between px-[50px] max-lg:h-[50px] max-lg:pb-[40px] max-lg:pt-[40px] lg:w-max">
             <Link href="/">
               <img

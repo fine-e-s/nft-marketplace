@@ -45,7 +45,7 @@ export default function Registration() {
         onClick={() => {
           !isAnimating && regToggle();
         }}
-        className={`invisible fixed z-20 flex h-full w-full items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm`}
+        className={`invisible fixed z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm`}
       >
         <>
           <SignUpForm
@@ -85,7 +85,7 @@ function LogInForm({ gsapSwitchForm, isAnimating }) {
     <>
       <div
         data-loginform
-        className="fixed top-1/2 left-1/2 z-30 flex w-max -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-darker max-md:flex-col"
+        className="fixed left-1/2 top-1/2 z-30 flex w-max -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-darker max-md:flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="m-3 flex h-full flex-col justify-between bg-transparent pt-3">
@@ -179,7 +179,7 @@ function SignUpForm({ gsapSwitchForm, isAnimating }) {
     <>
       <div
         data-signupform
-        className="fixed top-1/2 left-1/2 z-30 flex w-max -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-darker max-md:flex-col"
+        className="fixed left-1/2 top-1/2 z-30 flex w-max -translate-x-1/2 -translate-y-1/2 rounded-[20px] bg-darker max-md:flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="m-3 flex h-full flex-col justify-between bg-transparent pt-3">
@@ -229,7 +229,7 @@ function SignUpForm({ gsapSwitchForm, isAnimating }) {
               </div>
             </div>
           </form>
-          <div className="mx-2 mt-5 mb-1 flex justify-center gap-4">
+          <div className="mx-2 mb-1 mt-5 flex justify-center gap-4">
             <Button
               cta
               hoverScale
