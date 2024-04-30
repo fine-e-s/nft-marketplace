@@ -5,6 +5,7 @@ import { auth } from "@/firebase/firebaseApp";
 import { gsap } from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   const [currentChildren, setChildren] = useState(children);
@@ -15,6 +16,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (children !== currentChildren) {
       let tl = gsap.timeline();
+      window.scrollTo({ behavior: "smooth", top: 0 });
 
       tl.to(el.current, {
         opacity: 0,
@@ -38,6 +40,7 @@ export default function Layout({ children }) {
           <div ref={el} className="flex flex-col items-center">
             {currentChildren}
           </div>
+          <Footer />
         </>
       )}
     </>

@@ -32,7 +32,7 @@ select:-webkit-autofill:focus {
 
 input {
   background-color: transparent !important;
-  color: white !important;
+  color: white;
   outline: 0;
 }
 
@@ -41,7 +41,7 @@ input {
     @apply transition duration-300 ease-in-out hover:scale-105;
   }
   .hoverUnderline {
-    @apply absolute block h-[4px] w-full translate-y-[2px] -translate-x-1/2 scale-x-0 bg-purple-500 transition duration-150 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100;
+    @apply absolute block h-[4px] w-full -translate-x-1/2 translate-y-[2px] scale-x-0 bg-purple-500 transition duration-150 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100;
   }
 }
 
