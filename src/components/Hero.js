@@ -44,7 +44,10 @@ export default function Hero() {
   }, [isAnimating]);
 
   return (
-    <div className=" flex h-screen items-center justify-center gap-[30px] max-md:mx-[30px] max-md:flex-col">
+    <div
+      className="flex h-screen items-center justify-center gap-[30px] max-md:mx-[30px] max-md:flex-col"
+      id="hero"
+    >
       <HeroBlock />
     </div>
   );

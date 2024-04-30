@@ -8,16 +8,27 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
     document.querySelectorAll("#section").forEach((section) =>
       gsap.to(section, {
         opacity: 1,
-        delay: 0.2,
+        delay: 0.1,
         scrollTrigger: {
           trigger: section,
-          start: "top center",
+          start: "top 90%",
         },
       })
     );
+    gsap.to("#hero", {
+      height: "auto",
+      marginBottom: 40,
+      marginTop: 124,
+      duration: 1,
+      scrollTrigger: {
+        trigger: "#section",
+        start: "top 90%",
+      },
+    });
   }, []);
   return (
     <>
