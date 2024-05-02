@@ -1,17 +1,11 @@
 import Search from "./Search";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Categories() {
   const router = useRouter();
   const { categoryQuery } = router.query;
-
-  function handleCategoryClick(categoryName) {
-    router.push({
-      pathname: "marketplace",
-      query: { ...router.query, categoryQuery: categoryName },
-    });
-  }
 
   return (
     <div className="my-[40px] flex flex-col gap-[60px] opacity-0" id="section">
@@ -20,7 +14,7 @@ export default function Categories() {
       </div>
       <div className="grid grid-cols-4 gap-[30px] max-md:grid-cols-2">
         {categories.map((item, i) => (
-          <div
+          <Link
             className={`flex h-[210px] w-[150px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 bg-lighter bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:bg-darker lg:h-[320px] lg:w-[240px]
           ${
             item.name === categoryQuery
@@ -28,11 +22,13 @@ export default function Categories() {
               : "border-transparent hover:border-lighter"
           }`}
             key={item.name + i}
+            href={{
+              pathname: "marketplace",
+              query: { categoryQuery: item.name },
+            }}
+            scroll={false}
           >
-            <div
-              className="flex items-center justify-center overflow-hidden"
-              onClick={() => handleCategoryClick(item.name)}
-            >
+            <div className="flex items-center justify-center overflow-hidden">
               <div className="h-[142px] w-[150px] scale-[1.1] bg-inherit bg-cover bg-center blur-[8px] contrast-[.90] lg:h-[240px] lg:w-[240px]">
                 <Image
                   src={`/images/${item.img}`}
@@ -52,7 +48,7 @@ export default function Categories() {
             <div className="bg-inherit pl-[16px] pt-[22px] text-[14px] font-semibold leading-[1.4] lg:pl-[30px] lg:text-[22px]">
               {item.name}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -63,22 +59,6 @@ export function CategoriesMarketplace() {
   const router = useRouter();
   const { categoryQuery } = router.query;
 
-  function handleCategoryClick(categoryName) {
-    const newQuery = { ...router.query, categoryQuery: categoryName };
-    if (categoryName == categoryQuery) {
-      delete newQuery.categoryQuery;
-    }
-
-    router.push(
-      {
-        pathname: "marketplace",
-        query: newQuery,
-      },
-      undefined,
-      { shallow: true }
-    );
-  }
-
   return (
     <div className="my-[40px] flex flex-col gap-[30px]">
       <div className="text-[28px] font-semibold leading-[1.2] lg:text-[38px]">
@@ -86,7 +66,7 @@ export function CategoriesMarketplace() {
       </div>
       <div className="grid grid-cols-4 gap-[20px] max-md:grid-cols-2">
         {categories.map((item, i) => (
-          <div
+          <Link
             className={`flex w-[160px] cursor-pointer flex-col overflow-hidden rounded-[20px] border-2 bg-lighter bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:bg-darker lg:w-[240px]
           ${
             item.name === categoryQuery
@@ -94,7 +74,11 @@ export function CategoriesMarketplace() {
               : "border-transparent hover:border-lighter"
           }`}
             key={item.name + i}
-            onClick={() => handleCategoryClick(item.name)}
+            href={{
+              pathname: "marketplace",
+              query: { categoryQuery: item.name },
+            }}
+            scroll={false}
           >
             <div className="flex items-center justify-center overflow-hidden"></div>
             <div className="flex h-14 items-center bg-inherit text-[14px] font-semibold lg:text-[18px]">
@@ -109,7 +93,7 @@ export function CategoriesMarketplace() {
                 {item.name}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <Search />
