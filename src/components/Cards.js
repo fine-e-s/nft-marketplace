@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Loading from "./Loading";
 import { SearchContext } from "@/pages/marketplace";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Cards() {
   const router = useRouter();
@@ -49,8 +50,8 @@ export default function Cards() {
       setSearchLoading(false);
     }
 
-    const timer = setTimeout(() => {
-      fetchCards();
+    const timer = setTimeout(async () => {
+      await fetchCards();
     }, 700);
 
     return () => clearTimeout(timer);
@@ -68,11 +69,16 @@ export default function Cards() {
                 className="flex h-[470px] w-[330px] flex-col overflow-hidden rounded-[20px] border-2 border-transparent bg-[#2b2b2b] bg-clip-content transition duration-300 ease-in-out will-change-transform hover:scale-105 hover:border-[#2b2b2b] hover:bg-[#3b3b3b]"
                 key={dataElement.name + i}
               >
-                <div
-                  className="h-[295px] w-[330px] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${dataElement.url})` }}
-                ></div>
-                <div className="mx-0 my-auto flex flex-col gap-[25px] bg-inherit">
+                <div className="h-[295px] w-[330px] overflow-hidden">
+                  <Image
+                    className="-translate-y-[5%]"
+                    height={330}
+                    width={330}
+                    src={dataElement.url}
+                    loading="eager"
+                  />
+                </div>
+                <div className="z-10 mx-0 my-auto flex flex-col gap-[25px] bg-inherit">
                   <div className="flex flex-col gap-[6px] bg-inherit px-[30px]">
                     <div className="bg-inherit text-[22px] font-semibold leading-[1.4]">
                       {dataElement.name}
