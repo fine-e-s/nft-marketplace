@@ -54,29 +54,17 @@ export default function Hero() {
 }
 
 function HeroBlock() {
-  if (useWindowSize().width >= 768) {
-    return (
-      <>
-        <HeroContainer>
-          <Headlines />
-          <ButtonStart />
-          <Numbers />
-        </HeroContainer>
-        <Selected />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <HeroContainer>
-          <Headlines />
-          <Selected />
-          <ButtonStart />
-          <Numbers />
-        </HeroContainer>
-      </>
-    );
-  }
+  return (
+    <>
+      <HeroContainer>
+        <Headlines />
+        {useWindowSize().width < 768 && <Selected />}
+        <ButtonStart />
+        <Numbers />
+      </HeroContainer>
+      {useWindowSize().width >= 768 && <Selected />}
+    </>
+  );
 }
 
 function Headlines() {
