@@ -6,6 +6,7 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 export default function Footer() {
   return (
     <>
+      <div className="h-1 w-full" />
       <footer className="flex h-auto w-full flex-col items-center gap-8 bg-lighter py-10">
         <div className="flex flex-row bg-lighter max-lg:flex-col max-lg:gap-7">
           <Col1 />
